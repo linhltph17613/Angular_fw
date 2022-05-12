@@ -1,0 +1,33 @@
+<table border="1" class="table table-hover">
+    <thead>
+        <tr>
+            <th class="bg-info">Mã giảng viên</th>
+            <th class="bg-info">Tên giảng viên</th>
+            <th class="bg-info">Tuổi </th>
+            <th class="bg-info">Giới tính </th>
+            <th class="bg-info">Hình ảnh</th>
+            <th class="bg-info">Trạng thái</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of students">
+
+            <td>{{student.id}}</td>
+            <td>
+                <app-table-name [name]="student.name"></app-table-name>
+            </td>
+            <td>{{student.age}}</td>
+            <td>
+                <app-table-gender [gender]="student.gender"></app-table-gender>
+            </td>
+
+            <!-- <td><img width="70px" src="{{student.avatar}}" alt="{{student.avatar}}"></td> -->
+            <td><img width="70px" [src]="student.avatar" [alt]="student.avatar"></td>
+            <td>
+                <app-table-status [status]="student.status"></app-table-status>
+            </td>
+
+
+        </tr>
+    </tbody>
+</table>
