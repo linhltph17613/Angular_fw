@@ -20,7 +20,7 @@ export class AppComponent {
       name: 'linhlt',
       age: 30,
       gender: 0,
-      avatar: "https://i.imgur.com/rYWKRva.jpg",
+      avatar: "https://picsum.photos/50/50",
       status: 0
     },
     
@@ -29,7 +29,7 @@ export class AppComponent {
       name: 'dattd',
       age: 35,
       gender: 1,
-      avatar: "https://i.imgur.com/rYWKRva.jpg",
+      avatar: "https://picsum.photos/50/50",
       status: 1
     },
     {
@@ -37,7 +37,7 @@ export class AppComponent {
      name: 'tuanntd',
       age: 30,
       gender: 1,
-      avatar: "https://i.imgur.com/rYWKRva.jpg",
+      avatar: "https://picsum.photos/50/50",
       status: 1
     },
     {
@@ -45,7 +45,7 @@ export class AppComponent {
      name: 'thuynt',
       age: 25,
       gender: 0,
-      avatar: "https://i.imgur.com/rYWKRva.jpg",
+      avatar: "https://picsum.photos/50/50",
       status: 1
     }
 
