@@ -22,7 +22,9 @@
             </td>
 
             <!-- <td><img width="70px" src="{{student.avatar}}" alt="{{student.avatar}}"></td> -->
-            <td><img width="70px" [src]="student.avatar" [alt]="student.avatar"></td>
+            <td>
+                <app-table-avatar [age]="student.age" [avatar]="student.avatar"></app-table-avatar>
+            </td>
             <td>
                 <app-table-status [status]="student.status"></app-table-status>
             </td>
