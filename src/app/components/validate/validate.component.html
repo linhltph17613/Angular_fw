@@ -1,0 +1,27 @@
+<span class="text-danger" *ngIf="(field.dirty || field.touched) && field.errors?.['required']"> {{key}} không được để
+    trống</span>
+
+<span class="text-danger" *ngIf="(field.dirty || field.touched) && field.errors?.['minlength']">{{key}} phải từ
+    {{field.errors?.['minlength'].requiredLength}} kí
+    tự</span>
+
+<span class="text-danger" *ngIf="(field.dirty || field.touched) && field.errors?.['min']">{{key}} tối thiểu là
+    {{field.errors?.['min'].min}}</span>
+
+<span class="text-danger" *ngIf="(field.dirty || field.touched) && field.errors?.['max']">{{key}} đa thiểu là
+    {{field.errors?.['max'].min}}</span>
+
+<span class="text-danger" *ngIf="(field.dirty || field.touched) && field.errors?.['email']"> {{key}} phải đúng định
+    dạng</span>
+
+<!-- <span *ngIf="(field.dirty || field.touched) && field.errors?.['required']" class="text-danger">{{key}} không được để
+    trống
+</span>
+<span *ngIf="(field.dirty || field.touched) && field.errors?.['minlength']" class="text-danger">{{key}} phải từ 6 ký tự
+</span>
+<span class="text-danger" *ngIf="(field.dirty || field.touched) && field.errors?.['min']">
+    {{key}} tối thiểu là 1
+</span>
+<span class="text-danger" *ngIf="(field.dirty || field.touched) && field.errors?.['max']">
+    {{key}} tối đa là 100
+</span> -->
