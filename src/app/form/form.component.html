@@ -28,8 +28,7 @@ iuu linhh
     </div>
     <div class="form-group">
         <label for="">Avata</label>
-        <input type="text" name="img" min="1" max="100" #img="ngModel" [(ngModel)]="inPutValue.img" required
-            class="form-control" />
+        <input type="text" name="img" #img="ngModel" [(ngModel)]="inPutValue.img" required class="form-control" />
         <app-validate [field]="img" key="Hình ảnh"></app-validate>
     </div>
     <div class="form-group mt-3">
