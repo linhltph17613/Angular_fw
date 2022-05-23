@@ -14,6 +14,9 @@ import { TableAvatarComponent } from './table/table-avatar/table-avatar.componen
 import { FormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
 import { ValidateComponent } from './components/validate/validate.component';
+import { UserListComponent } from './user/user-list/user-list.component';
+import { UserFormComponent } from './user/user-form/user-form.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { ValidateComponent } from './components/validate/validate.component';
     TableAvatarComponent,
     FormComponent,
     ValidateComponent,
+    UserListComponent,
+    UserFormComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
