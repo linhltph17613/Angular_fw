@@ -1,1 +1,38 @@
-<p>user-form works!</p>
+<p>{{userForm.valid | json }}</p>
+<!-- Hàm truyêfn vào gtri và trả về    1 chuỗi  -->
+
+<form action="" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+    <div class="form-group">
+        <label for="">Name</label>
+        <input type="text" #name="ngModel" name="name" [(ngModel)]="inPutValue.name" class="form-control" required
+            minlength="6" />
+        <!-- <span>{{name.errors | json}}</span> -->
+        <app-validate [field]="name" key="Tên"></app-validate>
+    </div>
+    <div class="form-group">
+        <label for="">Age</label>
+        <input type="number" name="age" min="1" max="100" #age="ngModel" [(ngModel)]="inPutValue.age" required
+            class="form-control" />
+        <app-validate [field]="age" key="Tuổi"></app-validate>
+    </div>
+    <div class="form-group">
+        <label for="">Email</label>
+        <input type="email" name="email" #email="ngModel" [(ngModel)]="inPutValue.email" required email
+            class="form-control" />
+        <app-validate [field]="email" key="Email"></app-validate>
+    </div>
+    <div class="form-group">
+        <label for="">Sđt</label>
+        <input type="number" name="sdt" #sdt="ngModel" [(ngModel)]="inPutValue.sdt" required class="form-control" />
+        <app-validate [field]="sdt" key="Tuổi"></app-validate>
+    </div>
+    <div class="form-group">
+        <label for="">Avata</label>
+        <input type="text" name="img" #img="ngModel" [(ngModel)]="inPutValue.img" required class="form-control" />
+        <app-validate [field]="img" key="Hình ảnh"></app-validate>
+    </div>
+    <div class="form-group mt-3">
+        <button class="btn btn-success" [disabled]="!userForm.valid" type="submit">Save</button>
+        <button class="btn btn-danger mx-3">Cancel</button>
+    </div>
+</form>

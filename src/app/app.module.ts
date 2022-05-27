@@ -17,6 +17,8 @@ import { ValidateComponent } from './components/validate/validate.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserComponent } from './user/user.component';
+import { HomeComponent } from './home/home.component';
+import { ClientLayoutComponent } from './layouts/client-layout/client-layout.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { UserComponent } from './user/user.component';
     UserListComponent,
     UserFormComponent,
     UserComponent,
+    HomeComponent,
+    ClientLayoutComponent,
   ],
   imports: [
     BrowserModule,
