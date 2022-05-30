@@ -1,7 +1,7 @@
-<p>{{userForm.valid | json }}</p>
+<!-- <p>{{userForm.valid | json }}</p> -->
 <!-- Hàm truyêfn vào gtri và trả về    1 chuỗi  -->
 
-<form action="" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+<form action="" #userForm="ngForm" width="500px" (ngSubmit)="onSubmit(userForm)">
     <div class="form-group">
         <label for="">Name</label>
         <input type="text" #name="ngModel" name="name" [(ngModel)]="inPutValue.name" class="form-control" required

@@ -1,7 +1,21 @@
 <div class="container">
     <header>Header</header>
     <div>
-        <router-outlet></router-outlet> <!--  đây là nơi những phần component sẽ đc render  -->
+        <div class="">
+            <h1>Router</h1>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/user">User</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin">Admin</a>
+                </li>
+
+            </ul>
+            <router-outlet></router-outlet> <!--  đây là nơi những phần component sẽ đc render  -->
+        </div>
+        <footer>Footer</footer>
     </div>
-    <footer>Footer</footer>
-</div>

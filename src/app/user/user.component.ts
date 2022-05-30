@@ -20,7 +20,15 @@ export class UserComponent implements OnInit {
       name : 'linhciute',
       age : 30,
       email : 'linh@gmail.com',
-      img : '',
+      img : 'https://picsum.photos/50/50',
+      sdt: '0359582'
+    },
+    {
+      id : 3,
+      name : 'trangciute',
+      age : 30,
+      email : 'trang@gmail.com',
+       img : 'https://picsum.photos/50/50',
       sdt: '0359582'
     },
     {
@@ -28,7 +36,7 @@ export class UserComponent implements OnInit {
       name : 'huongciute',
       age : 30,
       email : 'huong@gmail.com',
-       img : '',
+       img : 'https://picsum.photos/50/50',
       sdt: '0359582'
     }
   ]
