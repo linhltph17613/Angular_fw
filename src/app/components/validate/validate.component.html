@@ -4,12 +4,15 @@
 <span class="text-danger" *ngIf="(field.dirty || field.touched) && field.errors?.['minlength']">{{key}} phải từ
     {{field.errors?.['minlength'].requiredLength}} kí
     tự</span>
+<span class="text-danger" *ngIf="(field.dirty || field.touched) && field.errors?.['maxlength']">{{key}} phải từ
+    {{field.errors?.['maxlength'].requiredLength}} kí
+    tự</span>
 
 <span class="text-danger" *ngIf="(field.dirty || field.touched) && field.errors?.['min']">{{key}} tối thiểu là
     {{field.errors?.['min'].min}}</span>
 
-<span class="text-danger" *ngIf="(field.dirty || field.touched) && field.errors?.['max']">{{key}} đa thiểu là
-    {{field.errors?.['max'].min}}</span>
+<span class="text-danger" *ngIf="(field.dirty || field.touched) && field.errors?.['max']">{{key}} tối đa là
+    {{field.errors?.['max'].max}}</span>
 
 <span class="text-danger" *ngIf="(field.dirty || field.touched) && field.errors?.['email']"> {{key}} phải đúng định
     dạng</span>

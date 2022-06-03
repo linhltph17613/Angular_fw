@@ -1,16 +1,24 @@
 {
-    "products" : [
-        {
-            "id" : 1,
-            "name" : "IPhone 11"
-        },
-         {
-            "id" : 2,
-            "name" : "IPhone 12"
-        },
-         {
-            "id" : 3,
-            "name" : "IPhone 14"
-        }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "IPhone 11"
+    },
+    {
+      "id": 4,
+      "name": "IPhone x"
+    },
+    {
+      "id": 19,
+      "name": "IPhone 14"
+    },
+    {
+      "name": "iphone cua lingg",
+      "id": 20
+    },
+    {
+      "name": "Androi của tường",
+      "id": 23
+    }
+  ]
 }

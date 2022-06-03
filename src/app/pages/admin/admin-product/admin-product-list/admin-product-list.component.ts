@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
+import { IProduct } from 'src/app/types/Products';
 
 @Component({
   selector: 'app-admin-product-list',
@@ -6,10 +8,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-product-list.component.css']
 })
 export class AdminProductListComponent implements OnInit {
+  products : IProduct[]
 
-  constructor() { }
+  //Định nghĩa service dưới tên 1 biến  đã tạo bên services
+  constructor(private productService : ProductService) { 
+   this.products = []
+  }
 
+  //Khi component render xong sẽ chạy 1 lần vào ngOnInnit
   ngOnInit(): void {
+    this.onGetList();
+  }
+
+  onGetList(){
+    //Lắng nghe API trả về kq , bao giờ trả về xong thì data sẽ có dl
+    this.productService.ListProducts().subscribe((data) => {
+      this.products = data
+    })
+  }
+  onDelete(id : string|number) {
+    //confirm -> ktra dl rồi xóa -> cập nhật ds
+    const confirmDelete = confirm('Bạn có muốn xóa k  ?')
+
+    if(confirmDelete && id){
+    this.productService.deleteProduct(id).subscribe((data) => {
+      //cập nhật ds
+      this.onGetList();
+    })
+    }
   }
 
 }
