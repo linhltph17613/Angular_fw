@@ -23,7 +23,8 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AdminProductListComponent } from './pages/admin/admin-product/admin-product-list/admin-product-list.component';
 import { AdminProductFormComponent } from './pages/admin/admin-product/admin-product-form/admin-product-form.component';
 import { AdminProductDetailComponent } from './pages/admin/admin-product/admin-product-detail/admin-product-detail.component';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './pages/auth/login/login.component'
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import {HttpClientModule} from '@angular/common/http'
     AdminProductListComponent,
     AdminProductFormComponent,
     AdminProductDetailComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

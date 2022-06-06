@@ -8,4 +8,7 @@
         <app-validate [field]="productForm.get('name')" key="Tên sản phẩm"></app-validate>
     </div>
     <div> <button class="btn btn-success" [disabled]="!productForm.valid">Submit</button> </div>
+    <a routerLink="/admin/products">
+        <button class="btn btn-primary">Quay lại</button>
+    </a>
 </form>

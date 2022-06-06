@@ -2,23 +2,40 @@
   "products": [
     {
       "id": 1,
-      "name": "IPhone 11"
+      "name": "11s abc product 12",
+      "status": 1
     },
     {
       "id": 4,
-      "name": "IPhone x"
+      "name": "hone x product ",
+      "status": 0
     },
     {
       "id": 19,
-      "name": "IPhone 14"
+      "name": "IPhone 14 product",
+      "status": 0
     },
     {
+      "id": 20,
       "name": "iphone cua lingg",
-      "id": 20
+      "status": 1
     },
     {
-      "name": "Androi của tường",
-      "id": 23
+      "name": "Androi tường 12 product",
+      "id": 23,
+      "status": 1
+    },
+    {
+      "name": "product iphoneX",
+      "id": 24,
+      "status": 0
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@gmail.com",
+      "password": "$2a$12$ZlQgBYDwAU34FGRNDuPR3OccwW3mPTIqrCZBq87bnNn8bej/g7eCK"
     }
   ]
 }

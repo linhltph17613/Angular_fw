@@ -26,4 +26,8 @@ export class ProductService {
     return this.http.post<IProduct>(`${environment.products}`, data)
 
   }
+  EditProduct( id: number| string, data : ProductAdd) : Observable<IProduct>{
+    return this.http.patch<IProduct>(`${environment.products}/${id}`, data)
+
+  }
 }

@@ -17,6 +17,12 @@
 <span class="text-danger" *ngIf="(field.dirty || field.touched) && field.errors?.['email']"> {{key}} phải đúng định
     dạng</span>
 
+
+
+<!-- Custom valedate -->
+<span class="text-danger" *ngIf="(field.dirty || field.touched) && field.errors?.['hasProductError']"> {{key}} phải chứa
+    từ 'product'</span>
+
 <!-- <span *ngIf="(field.dirty || field.touched) && field.errors?.['required']" class="text-danger">{{key}} không được để
     trống
 </span>
