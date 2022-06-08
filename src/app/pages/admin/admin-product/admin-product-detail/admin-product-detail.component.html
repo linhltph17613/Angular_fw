@@ -5,4 +5,9 @@
     <div class=""> id sp : {{product.id}}</div>
     <div class=""> name sp : {{product.name}}</div>
 
+    <div>
+        <input type="number" min="1" [value]="cartItemValues" (input)="onInputValueChange($event)">
+        <button (click)="onAddToCart()">Add to cart</button>
+    </div>
+
 </div>

@@ -19,7 +19,7 @@ export class CanAccessAdminGuard implements CanActivate {
       //3. Nếu đúng thì đi tiếp , nếu sai thì quay về login ngx-toas
       alert("Bạn phải đăng nhập!")
       this.router.navigateByUrl('/auth/login')
-    return true;
+    return false;
   }
   
 }

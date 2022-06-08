@@ -8,3 +8,8 @@ export type ProductAdd = {
     status? : number
 
 }
+export type TypeProductCart = {
+    id: number,
+    name: string,
+    value: number
+}

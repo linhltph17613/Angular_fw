@@ -32,6 +32,7 @@ import { AboutComponent } from './pages/shop/about/about.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
 import { DetailProductComponent } from './pages/shop/detail-product/detail-product.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { DetailProductComponent } from './pages/shop/detail-product/detail-produ
     FooterComponent,
     SignupComponent,
     DetailProductComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

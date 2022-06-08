@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProductService } from 'src/app/services/product.service';
 import { IProduct } from 'src/app/types/Products';
-
+import { TypeProductCart } from 'src/app/types/Products';
 @Component({
   selector: 'app-admin-product-detail',
   templateUrl: './admin-product-detail.component.html',
@@ -10,9 +11,11 @@ import { IProduct } from 'src/app/types/Products';
 })
 export class AdminProductDetailComponent implements OnInit {
   product : IProduct;
+  cartItemValues : number = 1;
 
   constructor(private productService : ProductService,
-              private activateRoute : ActivatedRoute
+              private activateRoute : ActivatedRoute,
+              private lsService : LocalStorageService
     ) {
       this.product = {
         id: 0,
@@ -28,6 +31,36 @@ export class AdminProductDetailComponent implements OnInit {
     this.productService.getProduct(idFromUrl).subscribe(data => {
       this.product = data;
     })
+  }
+  onInputValueChange(event : any) {
+    this.cartItemValues = event.target.value;
+  }
+  onAddToCart(){
+    //1. Định nghĩa cấu trúc thêm vào giỏ
+    const addItem = {
+      id: this.product.id,
+      name: this.product.name,
+      value: +this.cartItemValues
+    }
+
+    // //2. Kiểm tra xem sp này đã có trong giỏ hàng chưa
+    // //2.1.Lấy ra toàn bộ sp trong giỏ
+    // const cartItems = JSON.parse(localStorage.getItem('cart') || '[]') 
+    // //2.2 Tìm phần tử trong giỏ có id === addItem.id
+    // const exitItem = cartItems.find((item : TypeProductCart) => item.id === addItem.id)
+    // //3. Nếu không có thì push luôn vào làm phần tử mới
+    // if(!exitItem){
+    //   cartItems.push(addItem)
+    // }else {
+    //   //3.1 Nếu đã có thì cập nhật số lượng mới =  số lượng cũ + thêm
+    //   exitItem.value += addItem.value
+    // }
+    // //4. Cập nhật dl giỏ hàng
+    // localStorage.setItem('cart', JSON.stringify(cartItems))
+    this.lsService.setItem(addItem)
+    // //5. Cập nhật lại giá trị cho ô input
+    this.cartItemValues = 1
+
   }
 
 }
