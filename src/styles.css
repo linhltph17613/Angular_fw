@@ -1,1 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.overlay {
+  overflow: hidden;
+}
+.overlay:hover .text-over {
+  visibility: visible;
+  transition-delay: 100ms;
+}
+.text-over {
+  visibility: hidden;
+}
+.product-item:hover .info-item {
+  opacity: 0.5;
+}
+.menu > ul > li {
+  position: relative;
+  display: inline-block;
+}
+.menu > ul > li > a:hover {
+  color: yellowgreen;
+}
+.menu ul .subnav a:hover {
+  background-color: white;
+}
+.menu ul ul {
+  position: absolute;
+  display: none;
+  border-radius: 3px;
+  width: 200px;
+  /* border-right: 1px  solid gray;
+    border-left: 1px solid gray;
+    border-bottom: 1px solid gray; */
+  border-bottom: 0 0 5px black;
+  background-color: white;
+
+  margin-left: 0;
+  padding-left: 10px;
+}
+.menu ul ul a {
+  display: block;
+  line-height: 30px;
+}
+.menu ul ul a:hover {
+  color: #b97c5e;
+}
+.menu > ul > li:hover > ul {
+  display: block;
+}

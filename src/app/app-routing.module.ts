@@ -8,6 +8,10 @@ import { AdminProductDetailComponent } from './pages/admin/admin-product/admin-p
 import { AdminProductFormComponent } from './pages/admin/admin-product/admin-product-form/admin-product-form.component';
 import { AdminProductListComponent } from './pages/admin/admin-product/admin-product-list/admin-product-list.component';
 import { LoginComponent } from './pages/auth/login/login.component';
+import { AboutComponent } from './pages/shop/about/about.component';
+import { ContactComponent } from './pages/shop/contact/contact.component';
+import { DetailProductComponent } from './pages/shop/detail-product/detail-product.component';
+import { ListShopComponent } from './pages/shop/list-shop/list-shop.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserComponent } from './user/user.component';
 
@@ -16,6 +20,15 @@ const routes: Routes = [
     path : '', component: ClientLayoutComponent,
     children : [
       {path : '', component: HomeComponent},
+      {path : 'about', component: AboutComponent},
+      {path : 'products', 
+    children: [
+             {path: ':id', component : DetailProductComponent},
+
+    ]},
+
+      {path : 'contact', component: ContactComponent},
+
       {path : 'user', component: UserComponent}
     ]
   } ,

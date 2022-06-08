@@ -25,6 +25,13 @@ import { AdminProductFormComponent } from './pages/admin/admin-product/admin-pro
 import { AdminProductDetailComponent } from './pages/admin/admin-product/admin-product-detail/admin-product-detail.component';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './pages/auth/login/login.component';
+import { ProductComponent } from './components/product/product.component';
+import { ContactComponent } from './pages/shop/contact/contact.component';
+import { ListShopComponent } from './pages/shop/list-shop/list-shop.component';
+import { AboutComponent } from './pages/shop/about/about.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { SignupComponent } from './pages/auth/signup/signup.component';
+import { DetailProductComponent } from './pages/shop/detail-product/detail-product.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +55,13 @@ import { LoginComponent } from './pages/auth/login/login.component';
     AdminProductFormComponent,
     AdminProductDetailComponent,
     LoginComponent,
+    ProductComponent,
+    ContactComponent,
+    ListShopComponent,
+    AboutComponent,
+    FooterComponent,
+    SignupComponent,
+    DetailProductComponent,
   ],
   imports: [
     BrowserModule,
