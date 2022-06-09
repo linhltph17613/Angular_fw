@@ -12,13 +12,22 @@ export class CanAccessAdminGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       //1. Lấy ra thông tin user trong localstorage
       const loggedInUser = localStorage.getItem('loggedInUser')
+      
       //2. Kiểm tra xem thông tin có chính xác hay k
-      if(loggedInUser) {
-        return true
-      }
+      // if(loggedInUser && loggedInUser.user.role === 1) {
+      // return true;
+
+      // }
+      // if(loggedInUser && loggedInUser.user.role !== 1) {
+      //   alert('Bạn không phải admin')
+      // this.router.navigateByUrl('/')
+
+      // }
       //3. Nếu đúng thì đi tiếp , nếu sai thì quay về login ngx-toas
-      alert("Bạn phải đăng nhập!")
+      if(!loggedInUser){
+        alert("Bạn chưa đăng nhập!")
       this.router.navigateByUrl('/auth/login')
+      }
     return false;
   }
   

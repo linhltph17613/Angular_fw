@@ -8,6 +8,10 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Price</th>
+            <th scope="col">Sale Price</th>
+            <th scope="col">Desc</th>
             <th scope="col">Status</th>
             <th scope="col">Action</th>
 
@@ -18,17 +22,23 @@
         <tr *ngFor="let product of products, let i = index ">
             <th scope="row">{{i + 1}}</th>
             <td>{{product.name}}</td>
-            <td><span *ngIf="product.status === 1" (click)="onStatus(product.id, 0)" class="btn btn-primary ">ON</span>
-                <span *ngIf="product.status === 0" (click)="onStatus(product.id, 1)" class="btn btn-dark">OFF</span>
+            <td><img width="70px" src={{product.image}} alt=""></td>
+            <td>{{product.price}}</td>
+            <td>{{product.salePrice}}</td>
+            <td>{{product.desc}}</td>
+
+
+            <td><span *ngIf="product.status === 1" (click)="onStatus(product._id, 0)" class="btn btn-primary ">ON</span>
+                <span *ngIf="product.status === 0" (click)="onStatus(product._id, 1)" class="btn btn-dark">OFF</span>
             </td>
             <td>
                 <!-- <a routerLink="/admin/products/{{product.id}}">Detail</a> -->
-                <a [routerLink]="['/admin', 'products', product.id]"><button class="btn btn-info">Detail</button></a>
+                <a [routerLink]="['/admin', 'products', product._id]"><button class="btn btn-info">Detail</button></a>
             </td>
-            <td><a [routerLink]="['/admin', 'products', 'edit', product.id]"><button
+            <td><a [routerLink]="['/admin', 'products', 'edit', product._id]"><button
                         class="btn btn-primary">Edit</button></a></td>
 
-            <td><button class="btn btn-danger" (click)="onDelete(product.id)">Delete</button></td>
+            <td><button class="btn btn-danger" (click)="onDelete(product._id)">Delete</button></td>
 
         </tr>
 

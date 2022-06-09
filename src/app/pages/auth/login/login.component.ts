@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -16,8 +16,12 @@ export class LoginComponent implements OnInit {
 
   ) {
     this.loginForm = new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl(''),
+      email: new FormControl('', [
+        Validators.required
+      ]) ,
+      password: new FormControl('', [
+        Validators.required
+      ]) ,
 
     })
    }
@@ -33,6 +37,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('loggedInUser', JSON.stringify(data))
 
       //2. Điều hướng quay về admin
+      alert('Bạn đã đăng nhập thành công!')
       this.router.navigateByUrl('/admin/products')
     })
   }

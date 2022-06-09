@@ -1,18 +1,18 @@
 <div class="">
     <div class="grid grid-cols-2 max-w-6xl mx-auto">
         <div class="">
-            <img class="w-[550px] h-[676px]" src="" alt="" />
+            <img class="w-[550px] h-[606px]" src={{product.image}} alt="" />
         </div>
         <div class="">
-            <h1 class="font-serif text-5xl pt-10">abc</h1>
-            <p class="font-medium text-3xl text-[#B97C5E] py-3">
-                $123
+            <h1 class="font-serif text-5xl pt-10">{{product.name}}</h1>
+            <p class="font-medium text-3xl text-[#62ab00] py-3">
+                $ {{product.price}}
             </p>
-            <p class="text-gray-500 pb-3">sdfghjklkjhg</p>
+            <p class="text-gray-500 pb-3">{{product.desc}}</p>
             <form action="">
-                <input type="number" class="border w-25 h-[38px] pl-3 outline-0 mr-2" min="1" placeholder="1" name=""
-                    id="" />
-                <button id="AddToCart" class="inline-flex items-center h-10 px-5 text-white transition-colors duration-150 bg-[#B97C5E]
+                <input type="number" class="border w-25 h-[38px] pl-3 outline-0 mr-2" min="1" [value]="cartItemValues"
+                    (input)="onInputValueChange($event)" placeholder="1" name="" id="" />
+                <button (click)="onAddToCart()" class="inline-flex items-center h-10 px-5 text-white transition-colors duration-150 bg-[#62ab00]
                     rounded-lg focus:shadow-outline hover:bg-[#b96c4e]">
                     <span>Add to cart</span>
                     <svg class="w-4 h-4 ml-3 fill-current" viewBox="0 0 20 20">
@@ -28,7 +28,7 @@
                 <span>001</span>
                 <br />
                 <b>CATEGORIES:</b>
-                <span>Clay, Design, New, Plaster, Vision</span>
+                <span>Art, Biography, Anthology</span>
                 <br />
                 <b>TAGS:</b>
                 <span>Artist, Brick, Ceramics, Oval, Tactile, Wood</span>
@@ -38,7 +38,7 @@
 
             <div class="">
                 <button
-                    class="h-10 outline-0 text-[#B97C5E] font-serif transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline text-xl  hover:bg-[#B97C5E] hover:text-white w-[570px]">
+                    class="h-10 outline-0 text-[#62ab00] font-serif transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline text-xl  hover:bg-[#62ab00] hover:text-white w-[570px]">
                     Review ( 0 )
                 </button>
 

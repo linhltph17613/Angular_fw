@@ -15,10 +15,10 @@ export class ProductService {
   ListProducts (): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(environment.products)
   }
-  getProduct (id : number): Observable<IProduct> {
+  getProduct (id : string ): Observable<IProduct> {
     return this.http.get<IProduct>(`${environment.products}/${id}`)
   }
-  deleteProduct (id : number|string) : Observable<any> {
+  deleteProduct (id : string| number) : Observable<any> {
     return this.http.delete(`${environment.products}/${id}`)
   }
   //dl gửi đi {name : stirngg}, nhận về {id: number, name string}
@@ -27,7 +27,7 @@ export class ProductService {
 
   }
   EditProduct( id: number| string, data : ProductAdd) : Observable<IProduct>{
-    return this.http.patch<IProduct>(`${environment.products}/${id}`, data)
+    return this.http.patch<IProduct>(`${environment.products}/edit/${id}`, data)
 
   }
 }

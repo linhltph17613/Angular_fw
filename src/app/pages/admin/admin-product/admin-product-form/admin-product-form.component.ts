@@ -24,7 +24,16 @@ export class AdminProductFormComponent implements OnInit {
         Validators.minLength(6),
         Validators.maxLength(25),
         this.onValidateNameHasProduct
-      ])  //form control(giấ trị mặc định)
+      ]) , //form control(giấ trị mặc định)
+      price : new FormControl('', [
+        Validators.required
+      ]) ,
+      image : new FormControl('', [
+        Validators.required
+      ]) ,
+      salePrice : new FormControl('') ,
+      desc : new FormControl('') 
+
 
     })
     this.productId = ''
@@ -32,11 +41,17 @@ export class AdminProductFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.productId = this.activeRoute.snapshot.params['id']
+    console.log(this.productId);
     if(this.productId){
-      this.productService.getProduct(+this.productId).subscribe(data => {
+      this.productService.getProduct(this.productId).subscribe(data => {
+        console.log(data);
         //cập nhật data cho form 
         this.productForm.patchValue({
-          name: data.name
+          name: data.name,
+          price: data.price,
+          salePrice: data.salePrice,
+          image : data.image,
+          desc: data.desc
         })
       })
     }
@@ -44,7 +59,7 @@ export class AdminProductFormComponent implements OnInit {
   }
   onValidateNameHasProduct (control :  AbstractControl) : ValidationErrors|null {
     const inputValue = control.value
-    if(inputValue && inputValue.length > 6 && !inputValue.includes('product')){
+    if(inputValue && inputValue.length > 6 && !inputValue.includes('Product')){
         return {hasProductError: true}
 
     }
@@ -60,13 +75,7 @@ export class AdminProductFormComponent implements OnInit {
     console.log(this.productForm.value);
     //1. Nhận dl từ form => this.productForm.value
     const data = this.productForm.value
-    //  if (this.productId !== '' && this.productId !== undefined) {
-       
-    //   return this.productService.EditProduct(+this.productId, data).subscribe(data => {
-    //     this.redirectToList();
-    //   })
-    // }
-    if (this.productId !== '' && this.productId !== undefined) {
+    if (this.productId ) {
       return this.productService.EditProduct(this.productId, data).subscribe(data => {
         console.log(1);
         
@@ -75,10 +84,10 @@ export class AdminProductFormComponent implements OnInit {
     }
     // 2. call api 
     return this.productService.AddProduct(data).subscribe(data => {
+      console.log(data);
       //3. ql ds products
         this.redirectToList()
 
-      // this.router.navigate(['/admin', 'products'])
       //3.1 khi đã quay về list thì ngOnInnit trong list trong list sẽ lại được chạy và call api
       //Lấy ds mới 
     })

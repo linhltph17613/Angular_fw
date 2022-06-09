@@ -33,6 +33,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
 import { DetailProductComponent } from './pages/shop/detail-product/detail-product.component';
 import { CartComponent } from './components/cart/cart.component';
+import { CartProductComponent } from './pages/shop/cart-product/cart-product.component';
+import { AdminUserListComponent } from './pages/admin/admin-user/admin-user-list/admin-user-list.component';
+import { AdminUserFormComponent } from './pages/admin/admin-user/admin-user-form/admin-user-form.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +67,9 @@ import { CartComponent } from './components/cart/cart.component';
     SignupComponent,
     DetailProductComponent,
     CartComponent,
+    CartProductComponent,
+    AdminUserListComponent,
+    AdminUserFormComponent,
   ],
   imports: [
     BrowserModule,

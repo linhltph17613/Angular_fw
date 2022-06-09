@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { TypeProductCart } from '../types/Products';
+import { ProductCartType, TypeProductCart } from '../types/Products';
 
 @Injectable({
   providedIn: 'root'
@@ -17,18 +17,44 @@ export class LocalStorageService {
   getItem() {
     return JSON.parse(localStorage.getItem('cart') || '[]');
   }
-  setItem(addItem: TypeProductCart) {
-    // 1. Cập nhật dữ liệu vào ls
+  // setItem(addItem: TypeProductCart) {
+  //   // 1. Cập nhật dữ liệu vào ls
+  //   const cartItems = this.getItem();
+  //   const existItem = cartItems.find((item: TypeProductCart) => item._id === addItem._id);
+  //   if (!existItem) {
+  //     cartItems.push(addItem);
+  //   } else {
+  //     existItem.value += addItem.value;
+  //   }
+  //   localStorage.setItem('cart', JSON.stringify(cartItems));
+
+  //   // 2. Phát tín hiệu để lắng nghe bên watchService
+  //   this.serviceSubject.next(''); // báo là vừa thêm rồi đấy, update đi
+  // }
+  getUser(){
+    const user = localStorage.getItem('loggedInUser')
+    if(!user) {
+      return false;
+    }
+    return user
+  }
+  setItem(addItem: ProductCartType) {
+    //1. Cập nhật dữ liệu vao localstorage 
     const cartItems = this.getItem();
-    const existItem = cartItems.find((item: TypeProductCart) => item.id === addItem.id);
-    if (!existItem) {
+   
+    const exitsItem = cartItems.find((item: ProductCartType) => item.id === addItem.id);
+    
+    if(!exitsItem){
       cartItems.push(addItem);
-    } else {
-      existItem.value += addItem.value;
+    }else{
+      exitsItem.value += addItem.value;
+      exitsItem.price += (addItem.price*addItem.value)
     }
     localStorage.setItem('cart', JSON.stringify(cartItems));
-
-    // 2. Phát tín hiệu để lắng nghe bên watchService
-    this.serviceSubject.next(''); // báo là vừa thêm rồi đấy, update đi
+    //2. Phát tín hiệu để lắng nghe watchService
+    this.serviceSubject.next('');
+  }
+  logOut(){
+    return localStorage.removeItem('loggedInUser')
   }
 }

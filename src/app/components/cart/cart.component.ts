@@ -9,7 +9,8 @@ import { TypeProductCart } from 'src/app/types/Products';
 })
 export class CartComponent implements OnInit {
   cartItems : TypeProductCart[] = []
-  cartItemVaues : number = 0;
+  cartItemValues : number = 0;
+  user: any
   constructor(
     private lsService : LocalStorageService
   ) { }
@@ -26,9 +27,10 @@ export class CartComponent implements OnInit {
     onSetCartItems () {
     this.cartItems = this.lsService.getItem();
 
-    this.cartItemVaues = 0;
+    this.cartItemValues = 0;
     this.cartItems.forEach(item => {
-      this.cartItemVaues += item.value;
+      this.cartItemValues += item.value;
+      // alert("Thêm vào giỏ hàng thành công!")
     });
   }
 

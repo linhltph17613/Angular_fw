@@ -7,12 +7,16 @@ import { ClientLayoutComponent } from './layouts/client-layout/client-layout.com
 import { AdminProductDetailComponent } from './pages/admin/admin-product/admin-product-detail/admin-product-detail.component';
 import { AdminProductFormComponent } from './pages/admin/admin-product/admin-product-form/admin-product-form.component';
 import { AdminProductListComponent } from './pages/admin/admin-product/admin-product-list/admin-product-list.component';
+import { AdminUserListComponent } from './pages/admin/admin-user/admin-user-list/admin-user-list.component';
 import { LoginComponent } from './pages/auth/login/login.component';
+import { SignupComponent } from './pages/auth/signup/signup.component';
 import { AboutComponent } from './pages/shop/about/about.component';
+import { CartProductComponent } from './pages/shop/cart-product/cart-product.component';
 import { ContactComponent } from './pages/shop/contact/contact.component';
 import { DetailProductComponent } from './pages/shop/detail-product/detail-product.component';
 import { ListShopComponent } from './pages/shop/list-shop/list-shop.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
+import { UserListComponent } from './user/user-list/user-list.component';
 import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
@@ -21,6 +25,8 @@ const routes: Routes = [
     children : [
       {path : '', component: HomeComponent},
       {path : 'about', component: AboutComponent},
+      {path : 'cart', component: CartProductComponent},
+
       {path : 'products', 
     children: [
              {path: ':id', component : DetailProductComponent},
@@ -45,9 +51,24 @@ const routes: Routes = [
              {path: 'edit/:id', component : AdminProductFormComponent},
              {path: ':id', component : AdminProductDetailComponent},
              //đẩy admin product id xuống dưới cùng tránh việc nhầm id = ''
-
-             
-
+        ]
+    },
+    {path: 'users',
+        children : [
+             {path: '', component : AdminUserListComponent},
+             {path: 'add', component : AdminProductFormComponent},
+             {path: 'edit/:id', component : AdminProductFormComponent},
+             {path: ':id', component : AdminProductDetailComponent},
+             //đẩy admin product id xuống dưới cùng tránh việc nhầm id = ''
+        ]
+    },
+    {path: 'category',
+        children : [
+             {path: '', component : UserListComponent},
+             {path: 'add', component : AdminProductFormComponent},
+             {path: 'edit/:id', component : AdminProductFormComponent},
+             {path: ':id', component : AdminProductDetailComponent},
+             //đẩy admin product id xuống dưới cùng tránh việc nhầm id = ''
         ]
     },
      
@@ -58,6 +79,10 @@ const routes: Routes = [
     {
       path: 'login',
       component: LoginComponent
+    },
+    {
+      path: 'register',
+      component: SignupComponent
     }
   ] 
 }

@@ -27,7 +27,7 @@ export class AdminProductListComponent implements OnInit {
     })
   }
 
-  onStatus(productId: number, newStatus: number) {
+  onStatus(productId: number | string, newStatus: number) {
     // this.productService.EditProduct(`${productId}`, {
     //   status: newStatus
     // }).subscribe(data => {

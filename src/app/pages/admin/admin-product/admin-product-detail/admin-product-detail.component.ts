@@ -18,9 +18,13 @@ export class AdminProductDetailComponent implements OnInit {
               private lsService : LocalStorageService
     ) {
       this.product = {
-        id: 0,
+        _id: '',
         name: '',
-        status : 0
+        price: 0,
+        salePrice: 0,
+        image: '',
+        status : 0,
+        desc : ''
       }
      }
 
@@ -29,6 +33,7 @@ export class AdminProductDetailComponent implements OnInit {
     //tên id được định nghĩa ở app-routing :id
     const idFromUrl = this.activateRoute.snapshot.params['id']
     this.productService.getProduct(idFromUrl).subscribe(data => {
+      console.log(data);
       this.product = data;
     })
   }
@@ -38,8 +43,13 @@ export class AdminProductDetailComponent implements OnInit {
   onAddToCart(){
     //1. Định nghĩa cấu trúc thêm vào giỏ
     const addItem = {
-      id: this.product.id,
+      _id: this.product._id,
       name: this.product.name,
+      price: this.product.price,
+      salePrice: this.product.salePrice,
+      image: this.product.image,
+      desc: this.product.desc,
+
       value: +this.cartItemValues
     }
 

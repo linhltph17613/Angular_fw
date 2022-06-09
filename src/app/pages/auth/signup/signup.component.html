@@ -1,29 +1,37 @@
-<form class="m-auto shadow p-4 rounded-3 mt-3 w-50">
-    <h3 class="text-center font-medium text-3xl font-serif">Sign in</h3>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="m-auto shadow p-4 rounded-3 mt-3 w-50">
+    <h3 class="text-center font-medium text-3xl font-serif">Sign up</h3>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Your name</label>
         <input type="text" formControlName="name" class="form-control" id="exampleInputPassword1">
+        <app-validate [field]="userForm.get('name')" key="Tên người dùng"></app-validate>
+
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Your Image</label>
         <input type="text" formControlName="image" class="form-control" id="exampleInputPassword1">
+        <app-validate [field]="userForm.get('image')" key="Hình ảnh"></app-validate>
+
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
         <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
             aria-describedby="emailHelp">
+        <app-validate [field]="userForm.get('email')" key="Email"></app-validate>
+
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1">
+        <input type="string" formControlName="password" class="form-control" id="exampleInputPassword1">
+        <app-validate [field]="userForm.get('password')" key="Mật khẩu"></app-validate>
+
     </div>
     <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
         <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
     <div class="flex space-x-2">
-        <button type="button"
-            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Login</button>
+        <button type="submit" [disabled]="!userForm.valid"
+            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Register</button>
     </div>
 </form>

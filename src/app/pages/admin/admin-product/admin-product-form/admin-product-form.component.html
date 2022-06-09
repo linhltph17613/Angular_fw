@@ -1,14 +1,45 @@
 <!-- định nghĩa biến quản li lí form -->
-<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="productForm" class="m-auto shadow p-4 rounded-3 mt-3 w-50" (ngSubmit)="onSubmit()">
     <div class="form-group">
-        <label for="">Name</label>
-        <!-- Định nghĩa thuộc tính để lắng nghe input -->
-        <input type="text" class="form-control" formControlName="name">
-        <!-- productForm.get('tên thuộc tính = new FormGroup()') sẽ là kết quả khi lắng nghe -->
-        <app-validate [field]="productForm.get('name')" key="Tên sản phẩm"></app-validate>
+        <div class="">
+            <label for="">Name</label>
+            <!-- Định nghĩa thuộc tính để lắng nghe input -->
+            <input type="text" class="form-control" formControlName="name">
+            <!-- productForm.get('tên thuộc tính = new FormGroup()') sẽ là kết quả khi lắng nghe -->
+            <app-validate [field]="productForm.get('name')" key="Tên sản phẩm"></app-validate>
+        </div>
+        <div class="">
+            <label for="">Price</label>
+            <input type="number" class="form-control" formControlName="price">
+            <app-validate [field]="productForm.get('price')" key="Giá sản phẩm"></app-validate>
+        </div>
+        <div class="">
+            <label for="">Sale Price</label>
+            <input type="number" class="form-control" formControlName="salePrice">
+            <app-validate [field]="productForm.get('salePrice')" key="Giá sale sản phẩm"></app-validate>
+        </div>
+        <div class="">
+            <label for="">Image</label>
+            <input type="text" class="form-control" formControlName="image">
+            <app-validate [field]="productForm.get('image')" key="Hình ảnh sản phẩm"></app-validate>
+        </div>
+        <div class="">
+            <label for="">Desc</label>
+            <input type="text" class="form-control" formControlName="desc">
+            <app-validate [field]="productForm.get('desc')" key="Mô tả sản phẩm"></app-validate>
+        </div>
+        <div class="">
+            <label for="">Category</label>
+            <select class="form-select" aria-label="Default select example">
+                <option value="1">Biography</option>
+                <option value="2">Anthology</option>
+                <option value="3">Art</option>
+            </select>
+        </div>
     </div>
-    <div> <button class="btn btn-success" [disabled]="!productForm.valid">Submit</button> </div>
-    <a routerLink="/admin/products">
-        <button class="btn btn-primary">Quay lại</button>
-    </a>
+    <span> <button class="btn btn-success" [disabled]="!productForm.valid">Submit</button> </span>
+    <span><a routerLink="/admin/products">
+            <button class="btn btn-primary">Quay lại</button>
+        </a></span>
+
 </form>
