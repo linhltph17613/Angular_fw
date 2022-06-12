@@ -21,7 +21,7 @@
                             </li>
                             <li>
                                 <a class="block py-4 px-4 text-black font-medium hover:text-[#B97C5E];"
-                                    routerLink="/products">
+                                    routerLink="/products/list">
                                     SHOP
                                 </a>
                             </li>
@@ -40,11 +40,11 @@
                             <li>
                                 <a class="block py-4 px-3 text-black font-medium hover:text-[#B97C5E];"
                                     routerLink="/auth/login">
-                                    <i class="fa-solid fa-user"></i>
+                                    <i class="bi bi-person-lines-fill"></i>
                                 </a>
                                 <ul class="subnav ">
                                     <li>
-                                        <a class="text-black-500 font-medium" routerLink="/login">
+                                        <a class="text-black-500 font-medium" routerLink="/auth/login">
                                             LOGIN
                                         </a>
                                     </li>
@@ -54,7 +54,8 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <div class="text-black-500 font-medium cursor-pointer" id="logout">
+                                        <div class="text-black-500 font-medium cursor-pointer" (click)="onLogOut()"
+                                            id="logout">
                                             LOG OUT
                                         </div>
                                     </li>

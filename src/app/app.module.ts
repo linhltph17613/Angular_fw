@@ -36,6 +36,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { CartProductComponent } from './pages/shop/cart-product/cart-product.component';
 import { AdminUserListComponent } from './pages/admin/admin-user/admin-user-list/admin-user-list.component';
 import { AdminUserFormComponent } from './pages/admin/admin-user/admin-user-form/admin-user-form.component';
+import { AdminCategoriListComponent } from './pages/admin/admin-categori/admin-categori-list/admin-categori-list.component';
+import { AdminCategoriFormComponent } from './pages/admin/admin-categori/admin-categori-form/admin-categori-form.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import { AdminUserFormComponent } from './pages/admin/admin-user/admin-user-form
     CartProductComponent,
     AdminUserListComponent,
     AdminUserFormComponent,
+    AdminCategoriListComponent,
+    AdminCategoriFormComponent,
   ],
   imports: [
     BrowserModule,

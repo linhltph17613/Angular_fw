@@ -31,8 +31,8 @@ export class AuthService {
     return this.http.post<TypeLoginRequest>(`${environment.users}`, data)
 
   }
-  EditUser( id: number| string, data : TypeUser) : Observable<TypeLoginRequest>{
-    return this.http.patch<TypeLoginRequest>(`${environment.users}/edit/${id}`, data)
+  EditUser( id: string, data : TypeUser) : Observable<TypeRegister>{
+    return this.http.put<TypeRegister>(`${environment.users}/${id}`, data)
 
   }
 }

@@ -2,7 +2,7 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-const apiUrl = 'http://localhost:8000/api'
+const apiUrl = 'http://localhost:8001/api'
 
 export const environment = {
   production: false,
@@ -11,7 +11,7 @@ export const environment = {
   login : `${apiUrl}/login`,
   register : `${apiUrl}/register`,
   users : `${apiUrl}/users`,
-  category: `${apiUrl}/api/category`
+  categorys: `${apiUrl}/api/categorys`
 
 
 

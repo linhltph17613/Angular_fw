@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProductService } from 'src/app/services/product.service';
+import { TypeCategory } from 'src/app/types/Cate';
 import { IProduct } from 'src/app/types/Products';
 
 @Component({
@@ -25,7 +26,7 @@ export class DetailProductComponent implements OnInit {
         salePrice: 0,
         image: '',
         status : 0,
-        desc : ''
+        desc : '',
       };
 
    }
@@ -54,6 +55,13 @@ export class DetailProductComponent implements OnInit {
       desc: this.product.desc,
 
       value: +this.cartItemValues
+    }
+    const cartItem =JSON.parse(localStorage.getItem('cart') || '[]')
+    const exitItem = cartItem.find((item: TypeCategory) => item._id === addItem._id)
+    if(!exitItem){
+      cartItem.push(addItem)
+    }else{
+      exitItem.value += addItem.value
     }
      this.lsService.setItem(addItem)
     // //5. Cập nhật lại giá trị cho ô input

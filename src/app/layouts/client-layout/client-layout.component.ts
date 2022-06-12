@@ -4,8 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { TypeLoginRequest } from 'src/app/types/Auth';
-import { CategoryType } from 'src/app/types/category';
-
+import {TypeCategory} from 'src/app/types/Cate'
 @Component({
   selector: 'app-client-layout',
   templateUrl: './client-layout.component.html',
@@ -13,7 +12,7 @@ import { CategoryType } from 'src/app/types/category';
 })
 export class ClientLayoutComponent implements OnInit {
 users : any;
-category: CategoryType[] = []
+category: TypeCategory[] = []
   constructor(private categoryService : CategoryService,
     private lsService: LocalStorageService,
     private router: Router) {

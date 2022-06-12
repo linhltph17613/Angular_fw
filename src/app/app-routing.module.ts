@@ -4,9 +4,12 @@ import { CanAccessAdminGuard } from './guards/can-access-admin.guard';
 import { HomeComponent } from './home/home.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ClientLayoutComponent } from './layouts/client-layout/client-layout.component';
+import { AdminCategoriFormComponent } from './pages/admin/admin-categori/admin-categori-form/admin-categori-form.component';
+import { AdminCategoriListComponent } from './pages/admin/admin-categori/admin-categori-list/admin-categori-list.component';
 import { AdminProductDetailComponent } from './pages/admin/admin-product/admin-product-detail/admin-product-detail.component';
 import { AdminProductFormComponent } from './pages/admin/admin-product/admin-product-form/admin-product-form.component';
 import { AdminProductListComponent } from './pages/admin/admin-product/admin-product-list/admin-product-list.component';
+import { AdminUserFormComponent } from './pages/admin/admin-user/admin-user-form/admin-user-form.component';
 import { AdminUserListComponent } from './pages/admin/admin-user/admin-user-list/admin-user-list.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
@@ -29,6 +32,8 @@ const routes: Routes = [
 
       {path : 'products', 
     children: [
+             {path: 'list', component : ListShopComponent},
+
              {path: ':id', component : DetailProductComponent},
 
     ]},
@@ -56,17 +61,16 @@ const routes: Routes = [
     {path: 'users',
         children : [
              {path: '', component : AdminUserListComponent},
-             {path: 'add', component : AdminProductFormComponent},
-             {path: 'edit/:id', component : AdminProductFormComponent},
-             {path: ':id', component : AdminProductDetailComponent},
+             {path: 'add', component : AdminUserFormComponent},
+             {path: 'edit/:id', component : AdminUserFormComponent},
              //đẩy admin product id xuống dưới cùng tránh việc nhầm id = ''
         ]
     },
     {path: 'category',
         children : [
-             {path: '', component : UserListComponent},
-             {path: 'add', component : AdminProductFormComponent},
-             {path: 'edit/:id', component : AdminProductFormComponent},
+             {path: '', component : AdminCategoriListComponent},
+             {path: 'add', component : AdminCategoriFormComponent},
+             {path: 'edit/:id', component : AdminCategoriFormComponent},
              {path: ':id', component : AdminProductDetailComponent},
              //đẩy admin product id xuống dưới cùng tránh việc nhầm id = ''
         ]

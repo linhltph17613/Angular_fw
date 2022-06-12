@@ -1,3 +1,8 @@
+<div>
+    <a routerLink="/admin/users/add">
+        <button class="btn btn-primary">Add user</button>
+    </a>
+</div>
 <div class="">
     <table class="table">
         <thead>
@@ -7,12 +12,14 @@
                 <th scope="col">Email</th>
                 <th scope="col">Hình ảnh</th>
                 <th scope="col">Trạng thái</th>
+                <th scope="col">Phân quyền</th>
+                <th scope="col">Action</th>
                 <th></th>
 
 
             </tr>
         </thead>
-        <!-- <tbody>
+        <tbody>
             <tr *ngFor="let user of users let i = index">
                 <th scope="row">{{i + 1}}</th>
                 <td>{{user.name}}</td>
@@ -21,13 +28,20 @@
                 <td><span *ngIf="user.status === 1" (click)="onStatus(user._id, 0)" class="btn btn-primary ">ON</span>
                     <span *ngIf="user.status === 0" (click)="onStatus(user._id, 1)" class="btn btn-dark">OFF</span>
                 </td>
+                <td>{{user.role}}</td>
+
+
+                <!-- <td>
+                    <a [routerLink]="['/admin', 'users', 'edit',user._id]"><button
+                            class="btn btn-info">Edit</button></a>
+                </td> -->
                 <td>
-                    <button (click)="onEdit(user.id)" class="btn btn-warning">Sửa</button>
-                    <button (click)="onDelete(user.id)" class="btn btn-danger">Delete</button>
+                    <!-- <button (click)="onEdit(user.id)" class="btn btn-warning">Sửa</button> -->
+                    <button (click)="onDelete(user._id)" class="btn btn-danger">Delete</button>
 
                 </td>
             </tr>
 
-        </tbody> -->
+        </tbody>
     </table>
 </div>

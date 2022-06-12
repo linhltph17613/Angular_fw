@@ -32,7 +32,7 @@ export class LocalStorageService {
   //   this.serviceSubject.next(''); // báo là vừa thêm rồi đấy, update đi
   // }
   getUser(){
-    const user = localStorage.getItem('loggedInUser')
+    const user = (localStorage.getItem('loggedInUser') as string)
     if(!user) {
       return false;
     }

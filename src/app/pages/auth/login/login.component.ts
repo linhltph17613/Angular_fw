@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+
+
 
 @Component({
   selector: 'app-login',
@@ -12,7 +15,8 @@ export class LoginComponent implements OnInit {
   loginForm : FormGroup
   constructor(
     private authService : AuthService,
-    private router : Router
+    private router : Router,
+    private Email : LocalStorageService  
 
   ) {
     this.loginForm = new FormGroup({
@@ -38,7 +42,15 @@ export class LoginComponent implements OnInit {
 
       //2. Điều hướng quay về admin
       alert('Bạn đã đăng nhập thành công!')
-      this.router.navigateByUrl('/admin/products')
+      const ShowEmail = this.Email.getUser()
+      console.log(ShowEmail);
+      // if(ShowEmail.role === 1){
+      //   this.router.navigateByUrl('/admin/products')
+      // }    
+      // else{
+       this.router.navigateByUrl('')
+      // }
+
     })
   }
 

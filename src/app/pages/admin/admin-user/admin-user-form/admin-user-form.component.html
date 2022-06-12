@@ -1,1 +1,32 @@
-<p>admin-user-form works!</p>
+<!-- định nghĩa biến quản li lí form -->
+<form [formGroup]="userForm" class="m-auto shadow p-4 rounded-3 mt-3 w-50" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <div class="">
+            <label for="">Name</label>
+            <!-- Định nghĩa thuộc tính để lắng nghe input -->
+            <input type="text" class="form-control" formControlName="name">
+            <!-- userForm.get('tên thuộc tính = new FormGroup()') sẽ là kết quả khi lắng nghe -->
+            <app-validate [field]="userForm.get('name')" key="Tên user"></app-validate>
+        </div>
+        <div class="">
+            <label for="">Hình ảnh</label>
+            <input type="text" class="form-control" formControlName="image">
+            <app-validate [field]="userForm.get('image')" key="Tên user"></app-validate>
+        </div>
+        <div class="">
+            <label for="">Email</label>
+            <input type="email" class="form-control" formControlName="email">
+            <app-validate [field]="userForm.get('email')" key="Tên user"></app-validate>
+        </div>
+        <div class="">
+            <label for="">Password</label>
+            <input type="text" class="form-control" formControlName="password">
+            <app-validate [field]="userForm.get('password')" key="Tên user"></app-validate>
+        </div>
+    </div>
+    <span> <button class="btn btn-success" [disabled]="!userForm.valid">Submit</button> </span>
+    <span><a routerLink="/admin/users">
+            <button class="btn btn-primary">Quay lại</button>
+        </a></span>
+
+</form>

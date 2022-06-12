@@ -34,7 +34,6 @@ export class AdminProductFormComponent implements OnInit {
       salePrice : new FormControl('') ,
       desc : new FormControl('') 
 
-
     })
     this.productId = ''
   }
