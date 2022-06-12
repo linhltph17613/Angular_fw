@@ -1,12 +1,11 @@
 export type TypeCategory = {
     _id: string,
     name: string,
-    status : number,
+    status: number,
 
-} 
+}
 export type TypeCateAdd = {
-    _id?: string,
     name?: string,
-    status? : number,
+    status?: number,
 
 } 

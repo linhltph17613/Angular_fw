@@ -38,6 +38,7 @@ import { AdminUserListComponent } from './pages/admin/admin-user/admin-user-list
 import { AdminUserFormComponent } from './pages/admin/admin-user/admin-user-form/admin-user-form.component';
 import { AdminCategoriListComponent } from './pages/admin/admin-categori/admin-categori-list/admin-categori-list.component';
 import { AdminCategoriFormComponent } from './pages/admin/admin-categori/admin-categori-form/admin-categori-form.component';
+import { StatusComponent } from './components/status/status.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { AdminCategoriFormComponent } from './pages/admin/admin-categori/admin-c
     AdminUserFormComponent,
     AdminCategoriListComponent,
     AdminCategoriFormComponent,
+    StatusComponent,
   ],
   imports: [
     BrowserModule,

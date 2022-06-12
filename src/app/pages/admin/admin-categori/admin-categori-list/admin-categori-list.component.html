@@ -1,5 +1,5 @@
 <div>
-    <a routerLink="/admin/categorys/add">
+    <a routerLink="/admin/category/add">
         <button class="btn btn-primary">Add category</button>
     </a>
 </div>
@@ -9,6 +9,8 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Status</th>
+            <th scope="col">Detail</th>
+            <th scope="col">Edit</th>
             <th scope="col">Action</th>
 
 
@@ -18,17 +20,16 @@
         <tr *ngFor="let category of categories, let i = index ">
             <th scope="row">{{i + 1}}</th>
             <td>{{category.name}}</td>
-
-
-            <td><span *ngIf="category.status === 1" (click)="onStatus(category._id, 0)"
+            <td>
+                <span *ngIf="category.status === 1" (click)="onStatus(category._id, 0)"
                     class="btn btn-primary ">ON</span>
                 <span *ngIf="category.status === 0" (click)="onStatus(category._id, 1)" class="btn btn-dark">OFF</span>
             </td>
             <td>
-                <!-- <a routerLink="/admin/categorys/{{category.id}}">Detail</a> -->
-                <a [routerLink]="['/admin', 'categorys', category._id]"><button class="btn btn-info">Detail</button></a>
+                <!-- <a routerLink="/admin/category/{{category.id}}">Detail</a> -->
+                <a [routerLink]="['/admin', 'category', category._id]"><button class="btn btn-info">Detail</button></a>
             </td>
-            <td><a [routerLink]="['/admin', 'categorys', 'edit', category._id]"><button
+            <td><a [routerLink]="['/admin', 'category', 'edit', category._id]"><button
                         class="btn btn-primary">Edit</button></a></td>
 
             <td><button class="btn btn-danger" (click)="onDelete(category._id)">Delete</button></td>

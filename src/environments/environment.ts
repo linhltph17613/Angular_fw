@@ -6,12 +6,12 @@ const apiUrl = 'http://localhost:8001/api'
 
 export const environment = {
   production: false,
-  
-  products : `${apiUrl}/products`,
-  login : `${apiUrl}/login`,
-  register : `${apiUrl}/register`,
-  users : `${apiUrl}/users`,
-  categorys: `${apiUrl}/api/categorys`
+
+  products: `${apiUrl}/products`,
+  login: `${apiUrl}/login`,
+  register: `${apiUrl}/register`,
+  users: `${apiUrl}/users`,
+  categories: `${apiUrl}/category`
 
 
 

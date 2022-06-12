@@ -26,7 +26,7 @@ export type TypeProductCart = {
     desc : string
 }
 export type ProductCartType = {
-    id?: string ,
+    _id?: string ,
     name: string,
     price: number,
     salePrice: number,

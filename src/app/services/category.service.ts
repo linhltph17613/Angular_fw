@@ -8,21 +8,28 @@ import { TypeCateAdd, TypeCategory } from '../types/Cate';
 })
 export class CategoryService {
 
-  constructor( private http: HttpClient) { }
-    getCategory(): Observable<TypeCategory[]>{
-    return this.http.get<TypeCategory[]>(environment.categorys)
+  constructor(private http: HttpClient) { }
+  getCategory(): Observable<TypeCategory[]> {
+    return this.http.get<TypeCategory[]>(environment.categories)
   }
- 
-  deleteProduct (id : string| number) : Observable<any> {
-    return this.http.delete(`${environment.categorys}/${id}`)
+  getOneCate(id: string): Observable<TypeCategory> {
+    return this.http.get<TypeCategory>(`${environment.categories}/${id}`)
+  }
+
+  deleteCate(id: string | number): Observable<any> {
+    return this.http.delete(`${environment.categories}/${id}`)
   }
   //dl gửi đi {name : stirngg}, nhận về {id: number, name string}
-  AddProduct(data : TypeCateAdd) : Observable<CategoryService>{
-    return this.http.post<CategoryService>(`${environment.categorys}`, data)
+  AddCate(data: TypeCateAdd): Observable<TypeCategory> {
+    return this.http.post<TypeCategory>(`${environment.categories}`, data)
 
   }
-  EditProduct( id: number| string, data : TypeCateAdd) : Observable<CategoryService>{
-    return this.http.patch<CategoryService>(`${environment.categorys}/edit/${id}`, data)
+  // EditCate(id: string, data: TypeCateAdd): Observable<TypeCategory> {
+  //   return this.http.put<TypeCategory>(`${environment.categorys}/${id}`, data)
+
+  // }
+  EditCate(id: string, data: TypeCateAdd): Observable<TypeCategory> {
+    return this.http.patch<TypeCategory>(`${environment.categories}/${id}`, data)
 
   }
 }

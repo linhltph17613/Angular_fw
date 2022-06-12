@@ -8,11 +8,12 @@ import { TypeCategory } from 'src/app/types/Cate';
   styleUrls: ['./admin-categori-list.component.css']
 })
 export class AdminCategoriListComponent implements OnInit {
- categories : TypeCategory[]
+  categories: TypeCategory[]
+
 
   //Định nghĩa service dưới tên 1 biến  đã tạo bên services
-  constructor(private categoriService : CategoryService) { 
-   this.categories = []
+  constructor(private categoriService: CategoryService) {
+    this.categories = []
   }
 
   //Khi component render xong sẽ chạy 1 lần vào ngOnInnit
@@ -20,34 +21,34 @@ export class AdminCategoriListComponent implements OnInit {
     this.onGetList();
   }
 
-  onGetList(){
+  onGetList() {
+
     //Lắng nghe API trả về kq , bao giờ trả về xong thì data sẽ có dl
     this.categoriService.getCategory().subscribe((data) => {
       this.categories = data
     })
   }
+  onStatus(id: string, newStatus: number) {
 
-  onStatus(cateId: number | string, newStatus: number) {
-    // this.productService.EditProduct(`${cateId}`, {
-    //   status: newStatus
-    // }).subscribe(data => {
-    //   this.onGetList();
-    // });
-    this.categoriService.EditProduct(`${cateId}`, {
+    this.categoriService.EditCate(`${id}`, {
       status: newStatus
     }).subscribe(data => {
-      this.onGetList();
-    });
+      console.log(newStatus);
+      this.onGetList()
+    })
+
   }
-  onDelete(id : string|number) {
+  onDelete(id: string | number) {
     //confirm -> ktra dl rồi xóa -> cập nhật ds
     const confirmDelete = confirm('Bạn có muốn xóa k  ?')
 
-    if(confirmDelete && id){
-    this.categoriService.deleteProduct(id).subscribe((data) => {
-      //cập nhật ds
-      this.onGetList();
-    })
+    if (confirmDelete && id) {
+      this.categoriService.deleteCate(id).subscribe((data) => {
+        //cập nhật ds
+        alert('Bạn đã xóa thành công!')
+
+        this.onGetList();
+      })
     }
   }
 

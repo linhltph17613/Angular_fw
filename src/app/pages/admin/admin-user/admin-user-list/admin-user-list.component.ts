@@ -48,6 +48,8 @@ export class AdminUserListComponent implements OnInit {
     if(confirmDelete && id){
     this.productService.deleteUser(id).subscribe((data) => {
       //cập nhật ds
+      alert('Bạn đã xóa thành công!')
+
       this.onGetList();
     })
     }

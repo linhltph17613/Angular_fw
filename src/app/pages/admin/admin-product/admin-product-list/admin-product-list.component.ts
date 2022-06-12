@@ -8,11 +8,11 @@ import { IProduct } from 'src/app/types/Products';
   styleUrls: ['./admin-product-list.component.css']
 })
 export class AdminProductListComponent implements OnInit {
-  products : IProduct[]
+  products: IProduct[]
 
   //Định nghĩa service dưới tên 1 biến  đã tạo bên services
-  constructor(private productService : ProductService) { 
-   this.products = []
+  constructor(private productService: ProductService) {
+    this.products = []
   }
 
   //Khi component render xong sẽ chạy 1 lần vào ngOnInnit
@@ -20,7 +20,7 @@ export class AdminProductListComponent implements OnInit {
     this.onGetList();
   }
 
-  onGetList(){
+  onGetList() {
     //Lắng nghe API trả về kq , bao giờ trả về xong thì data sẽ có dl
     this.productService.ListProducts().subscribe((data) => {
       this.products = data
@@ -36,18 +36,21 @@ export class AdminProductListComponent implements OnInit {
     this.productService.EditProduct(`${productId}`, {
       status: newStatus
     }).subscribe(data => {
+      console.log(newStatus);
+
       this.onGetList();
     });
   }
-  onDelete(id : string|number) {
+  onDelete(id: string | number) {
     //confirm -> ktra dl rồi xóa -> cập nhật ds
     const confirmDelete = confirm('Bạn có muốn xóa k  ?')
 
-    if(confirmDelete && id){
-    this.productService.deleteProduct(id).subscribe((data) => {
-      //cập nhật ds
-      this.onGetList();
-    })
+    if (confirmDelete && id) {
+      this.productService.deleteProduct(id).subscribe((data) => {
+        //cập nhật ds
+        alert('Bạn đã xóa thành công!')
+        this.onGetList();
+      })
     }
   }
 

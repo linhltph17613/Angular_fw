@@ -1,1 +1,17 @@
-<p>admin-categori-form works!</p>
+<!-- định nghĩa biến quản li lí form -->
+<form [formGroup]="cateForm" class="m-auto shadow p-4 rounded-3 mt-3 w-50" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <div class="">
+            <label for="">Name</label>
+            <!-- Định nghĩa thuộc tính để lắng nghe input -->
+            <input type="text" class="form-control" formControlName="name">
+            <!-- cateForm.get('tên thuộc tính = new FormGroup()') sẽ là kết quả khi lắng nghe -->
+            <app-validate [field]="cateForm.get('name')" key="Tên danh mục"></app-validate>
+        </div>
+    </div>
+    <span> <button class="btn btn-success" [disabled]="!cateForm.valid">Submit</button> </span>
+    <span><a routerLink="/admin/category">
+            <button class="btn btn-primary">Quay lại</button>
+        </a></span>
+
+</form>

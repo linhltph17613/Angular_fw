@@ -9,30 +9,30 @@ import { TypeLoginRequest, TypeLoginResponse, TypeRegister, TypeUser } from '../
 })
 export class AuthService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  login(data : TypeLoginRequest) : Observable<TypeLoginResponse>{
-      return this.http.post<TypeLoginResponse>(environment.login, data)
+  login(data: TypeLoginRequest): Observable<TypeLoginResponse> {
+    return this.http.post<TypeLoginResponse>(environment.login, data)
   }
-  register(data : TypeRegister) : Observable<TypeRegister>{
-      return this.http.post<TypeRegister>(environment.register, data)
+  register(data: TypeRegister): Observable<TypeRegister> {
+    return this.http.post<TypeRegister>(environment.register, data)
   }
-  Listusers (): Observable<TypeLoginRequest[]> {
+  Listusers(): Observable<TypeLoginRequest[]> {
     return this.http.get<TypeLoginRequest[]>(environment.users)
   }
-  getUser (id : string ): Observable<TypeLoginRequest> {
+  getUser(id: string): Observable<TypeLoginRequest> {
     return this.http.get<TypeLoginRequest>(`${environment.users}/${id}`)
   }
-  deleteUser (id : string| number) : Observable<any> {
+  deleteUser(id: string | number): Observable<any> {
     return this.http.delete(`${environment.users}/${id}`)
   }
   //dl gửi đi {name : stirngg}, nhận về {id: number, name string}
-  AddUser(data : TypeRegister) : Observable<TypeLoginRequest>{
+  AddUser(data: TypeRegister): Observable<TypeLoginRequest> {
     return this.http.post<TypeLoginRequest>(`${environment.users}`, data)
 
   }
-  EditUser( id: string, data : TypeUser) : Observable<TypeRegister>{
-    return this.http.put<TypeRegister>(`${environment.users}/${id}`, data)
+  EditUser(id: string, data: TypeUser): Observable<TypeRegister> {
+    return this.http.put<TypeRegister>(`${environment.users}/edit/${id}`, data)
 
   }
 }

@@ -37,30 +37,46 @@
                                     ADMIN
                                 </a>
                             </li>
-                            <li>
-                                <a class="block py-4 px-3 text-black font-medium hover:text-[#B97C5E];"
-                                    routerLink="/auth/login">
-                                    <i class="bi bi-person-lines-fill"></i>
-                                </a>
-                                <ul class="subnav ">
-                                    <li>
-                                        <a class="text-black-500 font-medium" routerLink="/auth/login">
-                                            LOGIN
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="text-black-500 font-medium" routerLink="/auth/register">
-                                            SIGNUP
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="text-black-500 font-medium cursor-pointer" (click)="onLogOut()"
-                                            id="logout">
-                                            LOG OUT
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
+                                <li *ngIf="users;else other_content">
+                                    <a class="block py-4 px-2 text-black font-medium hover:text-[#B97C5E];" routerLink="/auth/login">
+                                    <i class="fa-solid fa-user-check"></i>
+                                    </a>
+                                    <ul class="subnav ">
+                                        <li>
+                                            <div class="text-black-500 font-medium cursor-pointer" (click)="onLogOut()" id="logout">
+                                            </div>
+                                        </li>
+                                
+                                        <li>
+                                            <div class="text-black-500 font-medium cursor-pointer" (click)="onLogOut()" id="logout">
+                                                LOG OUT
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            
+                            <ng-template #other_content>
+                                <li>
+                                    <a class="block py-4 px-2 text-black font-medium hover:text-[#B97C5E];" routerLink="/auth/login">
+                                        <i class="fa-solid fa-user"></i>
+                                    </a>
+                                    <ul class="subnav ">
+                                        <li>
+                                            <a class="text-black-500 font-medium" routerLink="/auth/login">
+                                                LOGIN
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="text-black-500 font-medium" routerLink="/auth/register">
+                                                SIGNUP
+                                            </a>
+                                        </li>
+                                
+                                    </ul>
+                                </li>
+                            </ng-template>
+                           
+                           
                         </ul>
                     </nav>
                 </div>

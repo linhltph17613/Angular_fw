@@ -9,32 +9,29 @@
                     <th class="py-2">Image</th>
                     <th class="py-2">Product</th>
                     <th class="py-2">Price</th>
-                    <th class="py-2">Amount</th>
                     <th class="py-2">QUANTITY</th>
                     <th class="py-2"> TOTAL</th>
                 </tr>
             </thead>
             <tbody>
 
-                <tr>
+                <tr *ngFor="let cart of productCart">
                     <td class="border px-6 text-center py-4">X</td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <img width="80" src="" />
+                        <img width="80" src="{{cart.image}}" />
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">name</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{cart.name}}</td>
 
                     <td class="px-6 py-4 whitespace-nowrap">
-                        $ gias
+                        $ {{cart.price}}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        danh mục ssp
-                    </td>
+
                     <td class="px-6 py-4 whitespace-nowrap">
 
-                        <input type="number" value={`${item.quantity}`} class="border border-gray-500 w-16 px-2" />
+                        <input type="number" value="{{cart.value}}" class="border border-gray-500 w-16 px-2" />
 
                     </td>
-                    <td>$ tổng</td>
+                    <td>$ {{cart.value * cart.price}}</td>
                 </tr>;
 
             </tbody>

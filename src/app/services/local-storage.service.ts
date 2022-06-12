@@ -15,6 +15,7 @@ export class LocalStorageService {
     return this.serviceSubject.asObservable()
   }
   getItem() {
+
     return JSON.parse(localStorage.getItem('cart') || '[]');
   }
   // setItem(addItem: TypeProductCart) {
@@ -42,7 +43,7 @@ export class LocalStorageService {
     //1. Cập nhật dữ liệu vao localstorage 
     const cartItems = this.getItem();
    
-    const exitsItem = cartItems.find((item: ProductCartType) => item.id === addItem.id);
+    const exitsItem = cartItems.find((item: ProductCartType) => item._id === addItem._id);
     
     if(!exitsItem){
       cartItems.push(addItem);

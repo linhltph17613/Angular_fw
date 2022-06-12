@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProductService } from 'src/app/services/product.service';
 import { TypeCategory } from 'src/app/types/Cate';
-import { IProduct } from 'src/app/types/Products';
+import { IProduct, ProductCartType } from 'src/app/types/Products';
 
 @Component({
   selector: 'app-detail-product',
@@ -12,10 +12,11 @@ import { IProduct } from 'src/app/types/Products';
 })
 export class DetailProductComponent implements OnInit {
   product : IProduct;
-  cartItemValues : number = 1;
+  cartItemValues : number ;
 
   constructor(private productService : ProductService,
               private activateRoute : ActivatedRoute,
+              private router : Router,
               private lsService : LocalStorageService
 
     ) {
@@ -28,7 +29,7 @@ export class DetailProductComponent implements OnInit {
         status : 0,
         desc : '',
       };
-
+  this.cartItemValues = 1;
    }
 
  ngOnInit(): void {
@@ -47,17 +48,12 @@ export class DetailProductComponent implements OnInit {
    onAddToCart(){
     //1. Định nghĩa cấu trúc thêm vào giỏ
     const addItem = {
-      _id: this.product._id,
-      name: this.product.name,
-      price: this.product.price,
-      salePrice: this.product.salePrice,
-      image: this.product.image,
-      desc: this.product.desc,
+    ...this.product,
 
       value: +this.cartItemValues
     }
     const cartItem =JSON.parse(localStorage.getItem('cart') || '[]')
-    const exitItem = cartItem.find((item: TypeCategory) => item._id === addItem._id)
+    const exitItem = cartItem.find((item: ProductCartType) => item._id === addItem._id)
     if(!exitItem){
       cartItem.push(addItem)
     }else{
@@ -65,7 +61,10 @@ export class DetailProductComponent implements OnInit {
     }
      this.lsService.setItem(addItem)
     // //5. Cập nhật lại giá trị cho ô input
+     this.router.navigateByUrl('/cart');
+
     this.cartItemValues = 1
+    
 
   }
 }
