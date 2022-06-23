@@ -1,11 +1,11 @@
 <div class="">
-    <div class=" max-w-6xl mx-auto pb-42">
+    <div class=" max-w-6xl mx-auto pb-42"  *ngFor="let cart of productCart, index as i">
         <h2>Tổng sản phẩm : <app-cart></app-cart>
         </h2>
         <table class=" border table table-hover">
             <thead>
                 <tr>
-                    <th class="border-r py-2">Remove</th>
+                    <th class="border-r py-2">Delete</th>
                     <th class="py-2">Image</th>
                     <th class="py-2">Product</th>
                     <th class="py-2">Price</th>
@@ -15,23 +15,42 @@
             </thead>
             <tbody>
 
-                <tr *ngFor="let cart of productCart">
-                    <td class="border px-6 text-center py-4">X</td>
+                <tr>
+                    <td class="border px-6 text-center py-4 cursor-pointer" (click)="onRemove(cart._id)">X</td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <img width="80" src="{{cart.image}}" />
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">{{cart.name}}</td>
 
                     <td class="px-6 py-4 whitespace-nowrap">
-                        $ {{cart.price}}
+                        $ {{(cart.price/100*(100-cart.salePrice))}}
                     </td>
 
                     <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="product-quantity flex">
+                        <div class="text-center rounded-full" (click)="onDecrease(cart._id)">
+                            <div class="flex space-x-2 justify-center">
+                                    <button type="button"
+                                        class="inline-block rounded-full bg-blue-600 text-white leading-normal uppercase shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-9 h-9">
+                                        -
+                                    </button>
+                            </div>
+                        </div>
+                        <div  class="text-center ">
+                            <h2 class="mx-3 space-x-2 justify-center">{{cart.value}}</h2>
+                        </div>
+                        <div class="text-center rounded-full" (click)="onIncrease(cart._id)">
+                            <div class="flex space-x-2 justify-center">
+                                <button type="button"
+                                    class="inline-block rounded-full bg-green-500 text-white leading-normal uppercase shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-grreen-800 active:shadow-lg transition duration-150 ease-in-out w-9 h-9">
+                                    +
+                                </button>
+                            </div>
+                        </div>
 
-                        <input type="number" value="{{cart.value}}" class="border border-gray-500 w-16 px-2" />
-
+                    </div>
                     </td>
-                    <td>$ {{cart.value * cart.price}}</td>
+                    <td>$ {{(cart.price/100*(100-cart.salePrice))*cart.value}}</td>
                 </tr>;
 
             </tbody>
@@ -48,25 +67,25 @@
                 </button>
             </div>
             <div class="flex gap-3">
-                <a href="/">
+                <a routerLink="/">
                     <button class="px-5 text-white font-serif  py-3 bg-[#62ab00] mx-2" type="submit">
                         Continue Shopping
                     </button>
                 </a>
-                <a href="/cart/checkout">
-                    <button class="px-5 text-white  font-serif py-3 bg-[#62ab00] mx-2" type="submit">
+                <a routerLink="/cart/checkout">
+                    <button class="px-5 text-white  font-serif py-3 bg-[#62ab00] mx-2 "  type="submit">
                         Proceed To Checkout
                     </button>
                 </a>
             </div>
         </div>
-        <div class="ml-[770px] pt-5  font-serif">
-            <h1 class=" text-2xl">Cart totals</h1>
-            <span class=" pt-5 text-xl">Subtotal: </span>
-            <span class="text-[#62ab00] text-lg">$103.00</span>
-            <br />
-            <span class="font-serif text-xl">Total: </span>
-            <span class="text-2xl text-red-700 font-medium">$103.00</span>
+        <div class="ml-[770px] pt-5 flex  font-serif">
+            <h1 class=" text-2xl">Cart totals: </h1>
+            <!-- <span class=" pt-5 text-xl">Subtotal: </span>
+            <span class="text-[#62ab00] text-lg">$103.00</span> -->
+            <!-- <br />
+            <span class="font-serif text-xl">Total: </span> -->
+            <span class="text-2xl text-red-700 font-medium">  {{(cart.price/100*(100-cart.salePrice))*cart.value}} $ </span>
         </div>
     </div>
 </div>

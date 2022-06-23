@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
+import { TypeUser } from 'src/app/types/Auth';
+import { TypeCategory } from 'src/app/types/Cate';
 import { IProduct } from 'src/app/types/Products';
 
 @Component({
@@ -9,10 +12,18 @@ import { IProduct } from 'src/app/types/Products';
 })
 export class AdminProductListComponent implements OnInit {
   products: IProduct[]
+  cateP : TypeCategory;
+  users: TypeUser[]
 
   //Định nghĩa service dưới tên 1 biến  đã tạo bên services
-  constructor(private productService: ProductService) {
-    this.products = []
+  constructor(private productService: ProductService,
+    private cateService : CategoryService) {
+    this.products = [],
+    this.users = [],
+    this.cateP = 
+      {_id: '', name: '', status: 0}
+    
+    
   }
 
   //Khi component render xong sẽ chạy 1 lần vào ngOnInnit
@@ -24,10 +35,15 @@ export class AdminProductListComponent implements OnInit {
     //Lắng nghe API trả về kq , bao giờ trả về xong thì data sẽ có dl
     this.productService.ListProducts().subscribe((data) => {
       this.products = data
+
+      // this.cateService.getOneCate(this.products._id).subscribe((data) =>{
+        
+      // })
+
     })
   }
 
-  onStatus(productId: number | string, newStatus: number) {
+  onStatus(productId: string | undefined, newStatus: number) {
     // this.productService.EditProduct(`${productId}`, {
     //   status: newStatus
     // }).subscribe(data => {
@@ -41,7 +57,7 @@ export class AdminProductListComponent implements OnInit {
       this.onGetList();
     });
   }
-  onDelete(id: string | number) {
+  onDelete(id: string | undefined) {
     //confirm -> ktra dl rồi xóa -> cập nhật ds
     const confirmDelete = confirm('Bạn có muốn xóa k  ?')
 

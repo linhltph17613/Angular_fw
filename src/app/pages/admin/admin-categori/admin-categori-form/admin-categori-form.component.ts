@@ -36,9 +36,11 @@ export class AdminCategoriFormComponent implements OnInit {
     if (this.cateId) {
       this.cateService.getOneCate(this.cateId).subscribe(data => {
         console.log(data);
+        const {category} = data
         //cập nhật data cho form 
         this.cateForm.patchValue({
-          name: data.name,
+          name: category.name,
+          status: 1
         })
       })
     }
@@ -57,6 +59,7 @@ export class AdminCategoriFormComponent implements OnInit {
     if (this.cateId) {
       return this.cateService.EditCate(this.cateId, data).subscribe(data => {
         console.log(this.cateId);
+        alert('Sửa thành công!')
 
         this.redirectToList();
       })
@@ -65,6 +68,7 @@ export class AdminCategoriFormComponent implements OnInit {
     return this.cateService.AddCate(data).subscribe(data => {
       console.log(data);
       //3. ql ds products
+      alert('Thêm thành công!')
       this.redirectToList()
 
       //3.1 khi đã quay về list thì ngOnInnit trong list trong list sẽ lại được chạy và call api

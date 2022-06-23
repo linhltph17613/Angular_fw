@@ -28,7 +28,6 @@ userId: String
         Validators.required
       ]) ,
       image : new FormControl('', [
-        Validators.required
       ]) ,
       password : new FormControl('', [
         Validators.required
@@ -58,8 +57,9 @@ userId: String
   }
    onSubmit() {
     const submitData = this.userForm.value
-    this.authService.register( submitData).subscribe(data => {
-
+    console.log(submitData)
+    this.authService.register(submitData).subscribe(data => {
+      console.log(data)
       //1. Nếu login thành công - > lưu dl user vào localstorge
       //setItem(key lưu trong localStorage, chuỗi giá trị)
       // localStorage.setItem('loggedInUser', JSON.stringify(data))

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, Type } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { TypeLoginRequest, TypeLoginResponse, TypeRegister, TypeUser } from '../types/Auth';
+import { TypeLoginRequest, TypeLoginResponse, TypeRegisterRequest, TypeUser } from '../types/Auth';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,8 @@ export class AuthService {
   login(data: TypeLoginRequest): Observable<TypeLoginResponse> {
     return this.http.post<TypeLoginResponse>(environment.login, data)
   }
-  register(data: TypeRegister): Observable<TypeRegister> {
-    return this.http.post<TypeRegister>(environment.register, data)
+  register(data: TypeRegisterRequest): Observable<TypeLoginResponse> {
+    return this.http.post<TypeLoginResponse>(environment.register, data)
   }
   Listusers(): Observable<TypeLoginRequest[]> {
     return this.http.get<TypeLoginRequest[]>(environment.users)
@@ -27,12 +27,12 @@ export class AuthService {
     return this.http.delete(`${environment.users}/${id}`)
   }
   //dl gửi đi {name : stirngg}, nhận về {id: number, name string}
-  AddUser(data: TypeRegister): Observable<TypeLoginRequest> {
+  AddUser(data: TypeLoginRequest): Observable<TypeLoginRequest> {
     return this.http.post<TypeLoginRequest>(`${environment.users}`, data)
 
   }
-  EditUser(id: string, data: TypeUser): Observable<TypeRegister> {
-    return this.http.put<TypeRegister>(`${environment.users}/edit/${id}`, data)
+  EditUser(id: string, data: TypeUser): Observable<TypeLoginRequest> {
+    return this.http.put<TypeLoginRequest>(`${environment.users}/edit/${id}`, data)
 
   }
 }

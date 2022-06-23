@@ -18,7 +18,11 @@ export class CartProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.AddToCart()
+    // Cần 1 cách thức nào đó có thể lắng nghe việc thay đổi giá trị của ls
+    // Hoặc cho biết khi nào có thể lấy dữ liệu mới
     this.ngService.watchService().subscribe(data => {
+      // Khi serviceSubject.next('') thì subscribe sẽ được gọi
+
       this.AddToCart()
     })
   }
@@ -28,9 +32,27 @@ export class CartProductComponent implements OnInit {
     this.cartItemValue = 0
     this.productCart.forEach(item => {
       this.cartItemValue += item.value
-      this.total += item.price * +item.value
+      this.total += ((item.price / 100 * (100 - item.salePrice)) * item.value)
     })
   }
-  
+  onRemove(id: string | undefined) {
+    this.ngService.removeById(id);
+    window.alert("Bạn xóa thành công")
+  }
+  ondelete() {
+    this.ngService.remove();
+    window.alert("Thanh toán thành công")
+  }
+  onDecrease(id: any) {
+    this.ngService.decrease(id)
+    window.alert("Cập nhật thành công")
+
+  }
+  onIncrease(id: any) {
+    this.ngService.increase(id);
+    window.alert("Cập nhật thành công")
+  }
+
+
 
 }

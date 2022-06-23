@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
+import { TypeCategory } from 'src/app/types/Cate';
 
 @Component({
   selector: 'app-admin-product-form',
@@ -11,8 +13,10 @@ import { ProductService } from 'src/app/services/product.service';
 export class AdminProductFormComponent implements OnInit {
   productForm: FormGroup;
   productId : string;
+  categories : TypeCategory[] = []
  
   constructor(
+    private cateSerive : CategoryService,
     private productService : ProductService ,//các pthuc call api
     private router : Router ,//điều hướng,
     private activeRoute : ActivatedRoute //lấy tham số trên url 
@@ -23,7 +27,6 @@ export class AdminProductFormComponent implements OnInit {
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(25),
-        this.onValidateNameHasProduct
       ]) , //form control(giấ trị mặc định)
       price : new FormControl('', [
         Validators.required
@@ -32,6 +35,7 @@ export class AdminProductFormComponent implements OnInit {
         Validators.required
       ]) ,
       salePrice : new FormControl('') ,
+      category_id: new FormControl(''),
       desc : new FormControl('') 
 
     })
@@ -50,20 +54,16 @@ export class AdminProductFormComponent implements OnInit {
           price: data.price,
           salePrice: data.salePrice,
           image : data.image,
-          desc: data.desc
+          desc: data.desc,
+          category_id: data.category_id
         })
       })
     }
+    this.cateSerive.getCategory().subscribe(data => {
+      this.categories = data
 
   }
-  onValidateNameHasProduct (control :  AbstractControl) : ValidationErrors|null {
-    const inputValue = control.value
-    if(inputValue && inputValue.length > 6 && !inputValue.includes('Product')){
-        return {hasProductError: true}
-
-    }
-    return null
-  }
+  )}
 
   redirectToList() {
     this.router.navigateByUrl('/admin/products');
@@ -77,7 +77,7 @@ export class AdminProductFormComponent implements OnInit {
     if (this.productId ) {
       return this.productService.EditProduct(this.productId, data).subscribe(data => {
         console.log(1);
-        
+        alert('Sửa thành công')
         this.redirectToList();
       })
     }
@@ -85,6 +85,8 @@ export class AdminProductFormComponent implements OnInit {
     return this.productService.AddProduct(data).subscribe(data => {
       console.log(data);
       //3. ql ds products
+      alert('Thêm thành công')
+
         this.redirectToList()
 
       //3.1 khi đã quay về list thì ngOnInnit trong list trong list sẽ lại được chạy và call api

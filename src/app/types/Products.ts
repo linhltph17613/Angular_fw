@@ -1,19 +1,22 @@
 export type IProduct = {
-    _id : string , //nếu dùng node js thì là string
-    name : string ,
+    _id?: string, //nếu dùng node js thì là string
+    name: string,
     price: number,
     salePrice: number,
     image: string,
-    status : number,
-    desc: string
+    status: number,
+    desc: string,
+    category_id: string
 }
 export type ProductAdd = {
-    name? : string ,
-    status? : number,
+    name?: string,
+    status?: number,
     price?: number,
     salePrice?: number,
     image?: string,
-    desc? : string
+    desc?: string,
+    category_id?: string
+
 
 }
 export type TypeProductCart = {
@@ -23,14 +26,18 @@ export type TypeProductCart = {
     price: number,
     salePrice: number,
     image: string,
-    desc : string
+    desc: string,
+    category_id: string
+
 }
 export type ProductCartType = {
-    _id?: string ,
+    _id?: string,
     name: string,
     price: number,
     salePrice: number,
     desc: string,
     image: string,
-    value: number
+    value: number,
+    category_id: string
+
 }

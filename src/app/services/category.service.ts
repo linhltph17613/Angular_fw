@@ -12,8 +12,8 @@ export class CategoryService {
   getCategory(): Observable<TypeCategory[]> {
     return this.http.get<TypeCategory[]>(environment.categories)
   }
-  getOneCate(id: string): Observable<TypeCategory> {
-    return this.http.get<TypeCategory>(`${environment.categories}/${id}`)
+  getOneCate(id: string): Observable<any> {
+    return this.http.get<any>(`${environment.categories}/${id}`)
   }
 
   deleteCate(id: string | number): Observable<any> {
@@ -28,7 +28,7 @@ export class CategoryService {
   //   return this.http.put<TypeCategory>(`${environment.categorys}/${id}`, data)
 
   // }
-  EditCate(id: string, data: TypeCateAdd): Observable<TypeCategory> {
+  EditCate(id: number |string, data: TypeCateAdd): Observable<TypeCategory> {
     return this.http.patch<TypeCategory>(`${environment.categories}/${id}`, data)
 
   }

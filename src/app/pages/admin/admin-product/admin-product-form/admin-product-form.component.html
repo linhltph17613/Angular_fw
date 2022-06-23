@@ -30,10 +30,9 @@
         </div>
         <div class="">
             <label for="">Category</label>
-            <select class="form-select" aria-label="Default select example">
-                <option value="1">Biography</option>
-                <option value="2">Anthology</option>
-                <option value="3">Art</option>
+            <select class="form-select" aria-label="Default select example" formControlName="category_id">
+                <option value="1"  *ngFor="let category of categories" value="{{category._id}}">{{category.name}} ></option>
+               
             </select>
         </div>
     </div>

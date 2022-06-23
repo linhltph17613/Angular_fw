@@ -42,10 +42,7 @@
                                     <i class="fa-solid fa-user-check"></i>
                                     </a>
                                     <ul class="subnav ">
-                                        <li>
-                                            <div class="text-black-500 font-medium cursor-pointer" (click)="onLogOut()" id="logout">
-                                            </div>
-                                        </li>
+                                       
                                 
                                         <li>
                                             <div class="text-black-500 font-medium cursor-pointer" (click)="onLogOut()" id="logout">
@@ -54,6 +51,10 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <div class="px-5 mt-4">
+                                    Hello {{users.user.name}} !
+                                
+                                </div>
                             
                             <ng-template #other_content>
                                 <li>
@@ -80,20 +81,15 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="px-5 mt-4">
-                    <i class="fa-brands fa-facebook-f px-2"></i>
-                    <i class="fa-brands fa-instagram px-2"></i>
-                    <i class="fa-brands fa-twitter px-2"></i>
-                </div>
+                
                 <div class="mt-4 pr-10">
-                    <span class="relative">
-                        <i class="fa-solid fa-cart-shopping text-xl"></i>
+                    <a routerLink="/cart">
 
-                        <span
-                            class="inline-flex absolute  items-center routerLinkp-[-13px] right-[-20px] justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-black  bg-white rounded-full">
-                            9
+                        <span class="relative cursor-pointer" >
+                            <i class="fa-solid fa-cart-shopping text-xl"></i>
+                            <app-cart  class="inline-flex absolute  items-center routerLinkp-[-13px] right-[-25px] -top-3 justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-black  bg-white rounded-full"></app-cart>
                         </span>
-                    </span>
+                    </a>
                 </div>
             </div>
         </nav>

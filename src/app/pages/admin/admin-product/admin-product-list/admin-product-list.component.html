@@ -12,6 +12,7 @@
             <th scope="col">Price</th>
             <th scope="col">Sale Price</th>
             <th scope="col">Desc</th>
+            <th scope="col">Category</th>
             <th scope="col">Status</th>
             <th scope="col">Action</th>
 
@@ -26,9 +27,13 @@
             <td>{{product.price}}</td>
             <td>{{product.salePrice}}</td>
             <td>{{product.desc}}</td>
+            <!-- <td >{{product.category_id.name}}</td> -->
+
+            
 
 
-            <td>
+            <td><span *ngIf="product.status === 1" (click)="onStatus(product._id, 0)" class="btn btn-primary ">ON</span>
+            <span *ngIf="product.status === 0" (click)="onStatus(product._id, 1)" class="btn btn-dark">OFF</span>
             </td>
             <td>
                 <!-- <a routerLink="/admin/products/{{product.id}}">Detail</a> -->
@@ -37,7 +42,7 @@
             <td><a [routerLink]="['/admin', 'products', 'edit', product._id]"><button
                         class="btn btn-primary">Edit</button></a></td>
 
-            <td><button class="btn btn-danger" (click)="onDelete(product._id)">Delete</button></td>
+            <td ><button class="btn btn-danger" (click)="onDelete(product._id)">Delete</button></td>
 
         </tr>
 

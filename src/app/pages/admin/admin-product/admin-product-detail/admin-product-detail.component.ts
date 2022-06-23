@@ -24,7 +24,8 @@ export class AdminProductDetailComponent implements OnInit {
         salePrice: 0,
         image: '',
         status : 0,
-        desc : ''
+        desc : '',
+        category_id: ''
       }
      }
 
@@ -49,6 +50,8 @@ export class AdminProductDetailComponent implements OnInit {
       salePrice: this.product.salePrice,
       image: this.product.image,
       desc: this.product.desc,
+      category_id: this.product.category_id,
+
 
       value: +this.cartItemValues
     }

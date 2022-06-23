@@ -15,6 +15,7 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
 import { AboutComponent } from './pages/shop/about/about.component';
 import { CartProductComponent } from './pages/shop/cart-product/cart-product.component';
+import { CheckoutComponent } from './pages/shop/checkout/checkout.component';
 import { ContactComponent } from './pages/shop/contact/contact.component';
 import { DetailProductComponent } from './pages/shop/detail-product/detail-product.component';
 import { ListShopComponent } from './pages/shop/list-shop/list-shop.component';
@@ -29,6 +30,8 @@ const routes: Routes = [
       {path : '', component: HomeComponent},
       {path : 'about', component: AboutComponent},
       {path : 'cart', component: CartProductComponent},
+      { path: 'cart/checkout', component: CheckoutComponent },
+
 
       {path : 'products', 
     children: [

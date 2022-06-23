@@ -33,7 +33,7 @@ export class LocalStorageService {
   //   this.serviceSubject.next(''); // báo là vừa thêm rồi đấy, update đi
   // }
   getUser(){
-    const user = (localStorage.getItem('loggedInUser') as string)
+    const user = JSON.parse(localStorage.getItem('loggedInUser') as string)
     if(!user) {
       return false;
     }
@@ -57,5 +57,46 @@ export class LocalStorageService {
   }
   logOut(){
     return localStorage.removeItem('loggedInUser')
+  }
+
+  removeById(id: string | undefined) {
+    let cartItems = this.getItem()
+    const confirm = window.confirm("Bạn có muốn xóa sản phẩm này khỏi giỏ hàng không ?")
+    if (confirm) {
+      cartItems = cartItems.filter((item: any) => item._id !== id)
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+      this.serviceSubject.next('')
+    }
+  }
+  remove() {
+    const confirm = window.confirm("Bán có muốn thanh toán không!")
+    if (confirm) {
+      localStorage.removeItem('cart');
+    }
+    this.serviceSubject.next('')
+  }
+  increase(id: string) {
+    let cartItems = this.getItem()
+    const cartItem = cartItems.find((product: any) => product._id === id)
+    cartItem.value++
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+    this.serviceSubject.next('')
+  }
+  decrease(id: string) {
+    let cartItems = this.getItem()
+    const currentItem = cartItems.find((product: any) => product._id === id)
+    currentItem.value--
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+    if (currentItem.value < 1) {
+      const confirm = window.confirm("Bạn có muốn xóa sản phẩm này khỏi giỏ hàng không ?")
+      if (confirm) {
+        cartItems = cartItems.filter((item: any) => item._id !== currentItem._id)
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+      } else {
+        currentItem.value = 1
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+      }
+    }
+    this.serviceSubject.next('')
   }
 }

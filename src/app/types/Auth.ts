@@ -18,7 +18,7 @@ export type TypeLoginResponse = {
         name: string,
         email: string,
         image: string,
-        password: string,
+        // password: string,
         status : number,
         role: number
 
@@ -27,13 +27,20 @@ export type TypeLoginResponse = {
 }
 
 
-export type TypeRegister = {
-    _id? : string,
+export type TypeRegisterRequest = {
+    email: string,
+    password: string,
+    image: string,
+    name: string
+
+}
+export type TypeRegisterResponse = {
+    _id:string
     email: string,
     password: string,
     image: string,
     name: string,
-    status : number,
+    status: number,
     role: number
 
 }

@@ -28,6 +28,7 @@ export class DetailProductComponent implements OnInit {
         image: '',
         status : 0,
         desc : '',
+        category_id: ''
       };
   this.cartItemValues = 1;
    }
@@ -47,12 +48,14 @@ export class DetailProductComponent implements OnInit {
   }
    onAddToCart(){
     //1. Định nghĩa cấu trúc thêm vào giỏ
+    // Tạo ra 1 biến additem để lưu tất cả tt vào 1 object 
     const addItem = {
     ...this.product,
 
       value: +this.cartItemValues
     }
     const cartItem =JSON.parse(localStorage.getItem('cart') || '[]')
+    //tìm ptu đc thêm vfo có giống phần trong localstoage k
     const exitItem = cartItem.find((item: ProductCartType) => item._id === addItem._id)
     if(!exitItem){
       cartItem.push(addItem)
