@@ -10,10 +10,10 @@ import { ProductCartType, TypeProductCart } from 'src/app/types/Products';
 })
 export class CartProductComponent implements OnInit {
   productCart: ProductCartType[] = [];
-  cartItemValue : number = 0;
-  total : number = 0
+  cartItemValue: number = 0;
+  total: number = 0
   constructor(
-    private ngService : LocalStorageService
+    private ngService: LocalStorageService
   ) { }
 
   ngOnInit(): void {
@@ -22,17 +22,18 @@ export class CartProductComponent implements OnInit {
     // Hoặc cho biết khi nào có thể lấy dữ liệu mới
     this.ngService.watchService().subscribe(data => {
       // Khi serviceSubject.next('') thì subscribe sẽ được gọi
+      console.log(100);
 
       this.AddToCart()
     })
   }
   AddToCart() {
-    this.productCart = JSON.parse(localStorage.getItem('cart') as string)
-    // console.log(this.productCart);
+    this.productCart = JSON.parse(localStorage.getItem('cart') || '[]')
+    console.log(this.productCart);
     this.cartItemValue = 0
     this.productCart.forEach(item => {
       this.cartItemValue += item.value
-      this.total += ((item.price / 100 * (100 - item.salePrice)) * item.value)
+      this.total += ((item.price - item.salePrice) * item.value)
     })
   }
   onRemove(id: string | undefined) {

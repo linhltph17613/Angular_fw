@@ -23,6 +23,7 @@ export class CanAccessAdminGuard implements CanActivate {
       this.router.navigateByUrl('/auth/login');
 
     } else {
+       
       if (loggedInUser && loggedInUser.user.role === 1) {
         return true;
       }
@@ -30,6 +31,7 @@ export class CanAccessAdminGuard implements CanActivate {
         window.alert("Bạn không phải admin")
         this.router.navigateByUrl('/');
       }
+     
     }
     // this.router.navigateByUrl('/auth/login');
     return false;

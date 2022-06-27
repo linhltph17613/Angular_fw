@@ -38,6 +38,7 @@ export type ProductCartType = {
     desc: string,
     image: string,
     value: number,
-    category_id: string
+    category_id: string,
+    
 
 }

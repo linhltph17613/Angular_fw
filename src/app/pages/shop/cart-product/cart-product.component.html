@@ -1,5 +1,5 @@
 <div class="">
-    <div class=" max-w-6xl mx-auto pb-42"  *ngFor="let cart of productCart, index as i">
+    <div class=" max-w-6xl mx-auto pb-42" >
         <h2>Tổng sản phẩm : <app-cart></app-cart>
         </h2>
         <table class=" border table table-hover">
@@ -15,7 +15,7 @@
             </thead>
             <tbody>
 
-                <tr>
+                <tr  *ngFor="let cart of productCart, index as i">
                     <td class="border px-6 text-center py-4 cursor-pointer" (click)="onRemove(cart._id)">X</td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <img width="80" src="{{cart.image}}" />
@@ -23,7 +23,7 @@
                     <td class="px-6 py-4 whitespace-nowrap">{{cart.name}}</td>
 
                     <td class="px-6 py-4 whitespace-nowrap">
-                        $ {{(cart.price/100*(100-cart.salePrice))}}
+                        $ {{(cart.price - cart.salePrice)}}
                     </td>
 
                     <td class="px-6 py-4 whitespace-nowrap">
@@ -50,8 +50,8 @@
 
                     </div>
                     </td>
-                    <td>$ {{(cart.price/100*(100-cart.salePrice))*cart.value}}</td>
-                </tr>;
+                    <td>$ {{(cart.price - cart.salePrice)*cart.value}}</td>
+                </tr>
 
             </tbody>
         </table>
@@ -79,13 +79,13 @@
                 </a>
             </div>
         </div>
-        <div class="ml-[770px] pt-5 flex  font-serif">
+        <div class="ml-[770px] pt-5 flex  font-serif" >
             <h1 class=" text-2xl">Cart totals: </h1>
             <!-- <span class=" pt-5 text-xl">Subtotal: </span>
             <span class="text-[#62ab00] text-lg">$103.00</span> -->
             <!-- <br />
             <span class="font-serif text-xl">Total: </span> -->
-            <span class="text-2xl text-red-700 font-medium">  {{(cart.price/100*(100-cart.salePrice))*cart.value}} $ </span>
+            <span class="text-2xl text-red-700 font-medium"> {{total}} $ </span>
         </div>
     </div>
 </div>

@@ -44,8 +44,10 @@ export class AdminProductFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.productId = this.activeRoute.snapshot.params['id']
-    console.log(this.productId);
+    // console.log(this.productId);
+
     if(this.productId){
+      //Chạy vào hàm lấy ra tt 1 sp để điền vào ô input
       this.productService.getProduct(this.productId).subscribe(data => {
         console.log(data);
         //cập nhật data cho form 
@@ -71,21 +73,20 @@ export class AdminProductFormComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.productForm.value);
     //1. Nhận dl từ form => this.productForm.value
     const data = this.productForm.value
     if (this.productId ) {
+      //sd pthuc edit 
       return this.productService.EditProduct(this.productId, data).subscribe(data => {
-        console.log(1);
         alert('Sửa thành công')
         this.redirectToList();
       })
     }
-    // 2. call api 
+    // 2. call api để thêm sp  
     return this.productService.AddProduct(data).subscribe(data => {
       console.log(data);
-      //3. ql ds products
       alert('Thêm thành công')
+      //3. ql ds products
 
         this.redirectToList()
 

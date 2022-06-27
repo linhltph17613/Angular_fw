@@ -11,63 +11,65 @@ import { IProduct, ProductCartType } from 'src/app/types/Products';
   styleUrls: ['./detail-product.component.css']
 })
 export class DetailProductComponent implements OnInit {
-  product : IProduct;
-  cartItemValues : number ;
+  product: IProduct;
+  cartItemValues: number;
 
-  constructor(private productService : ProductService,
-              private activateRoute : ActivatedRoute,
-              private router : Router,
-              private lsService : LocalStorageService
+  constructor(private productService: ProductService,
+    private activateRoute: ActivatedRoute,
+    private router: Router,
+    private lsService: LocalStorageService
 
-    ) {
-  this.product = {
-        _id: '',
-        name: '',
-        price: 0,
-        salePrice: 0,
-        image: '',
-        status : 0,
-        desc : '',
-        category_id: ''
-      };
-  this.cartItemValues = 1;
-   }
+  ) {
+    this.product = {
+      _id: '',
+      name: '',
+      price: 0,
+      salePrice: 0,
+      image: '',
+      status: 0,
+      desc: '',
+      category_id: ''
+    };
+    this.cartItemValues = 1;
+  }
 
- ngOnInit(): void {
+  ngOnInit(): void {
     //activateroute sẽ có thể đọc biến đc truyền vào trên url
     //tên id được định nghĩa ở app-routing :id
-   const idFromUrl = this.activateRoute.snapshot.params['id'];
 
+    const idFromUrl = this.activateRoute.snapshot.params['id'];
+    //sd api để lấy ddược dl sp của id đó
     this.productService.getProduct(idFromUrl).subscribe(data => {
+      //gán lại bằng biến mình vừa khai báo 
       this.product = data;
       // console.log(data);
     })
   }
-   onInputValueChange(event : any) {
+  onInputValueChange(event: any) {
     this.cartItemValues = event.target.value;
   }
-   onAddToCart(){
+  onAddToCart() {
     //1. Định nghĩa cấu trúc thêm vào giỏ
-    // Tạo ra 1 biến additem để lưu tất cả tt vào 1 object 
+    // Tạo ra 1 biến additem để lưu tất cả tt cua 1 san pham duoc add
     const addItem = {
-    ...this.product,
-
-      value: +this.cartItemValues
+      ...this.product,
+      value: +this.cartItemValues,
+      totalItem: (+this.product.price - +this.product.salePrice) * +this.cartItemValues
     }
-    const cartItem =JSON.parse(localStorage.getItem('cart') || '[]')
+    const cartItem = JSON.parse(localStorage.getItem('cart') || '[]')
     //tìm ptu đc thêm vfo có giống phần trong localstoage k
     const exitItem = cartItem.find((item: ProductCartType) => item._id === addItem._id)
-    if(!exitItem){
+    if (!exitItem) {
       cartItem.push(addItem)
-    }else{
+    } else {
       exitItem.value += addItem.value
     }
-     this.lsService.setItem(addItem)
+    this.lsService.setItem(addItem)
     // //5. Cập nhật lại giá trị cho ô input
-     this.router.navigateByUrl('/cart');
+    this.router.navigateByUrl('/cart');
 
     this.cartItemValues = 1
-    
+
 
   }
 }
